@@ -22,13 +22,13 @@
 
 ## 1. JSON 통신 방식 검토: REST API 연동
 
-자료: [REST API Json 호출 테스트 사이트](https://jiwift.tistory.com/entry/REST-API-Json-%ED%98%B8%EC%B6%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%82%AC%EC%9D%B4%ED%8A%B8)
+자료: [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 
 - [x] Vite + React 프로젝트 구성 (yarn, node-modules)
 - [x] JSONPlaceholder 응답 구조 확인
-- [ ] React에서 GET 요청으로 JSON 수신
-- [ ] JSON 파싱 후 화면에 표시
-- [ ] 목록 조회 및 로딩/에러 처리
+- [x] React에서 GET 요청으로 JSON 수신
+- [x] JSON 파싱 후 화면에 표시
+- [x] 목록 조회 및 로딩/에러 처리
 
 ---
 
