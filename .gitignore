@@ -1,4 +1,4 @@
-# Logs
+# 로그
 logs
 *.log
 npm-debug.log*
@@ -7,16 +7,43 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# 의존성
 node_modules
+
+# 빌드 결과
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# 환경 변수
+.env
+.env.*
+!.env.example
+
+# Yarn (node-modules 방식) — 로컬 설치 상태 / PnP 잔여물
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# 테스트 / 커버리지
+coverage
+*.lcov
+
+# 캐시
+.cache
+.eslintcache
+*.tsbuildinfo
+
+# 에디터 / OS
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
