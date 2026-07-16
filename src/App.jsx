@@ -2,6 +2,9 @@ import { Link, Routes, Route } from 'react-router-dom'
 import BeforeParse from './pages/BeforeParse.jsx'
 import TodoGet from './pages/TodoGet.jsx'
 import TodoList from './pages/TodoList.jsx'
+import TodoPost from './pages/TodoPost.jsx'
+import TodoPatch from './pages/TodoPatch.jsx'
+import TodoDelete from './pages/TodoDelete.jsx'
 
 export default function App() {
   return (
@@ -14,6 +17,12 @@ export default function App() {
         <Link to="/todo-get">JSON GET (단건)</Link>
         {' | '}
         <Link to="/todo-list">JSON GET (목록)</Link>
+        {' | '}
+        <Link to="/todo-post">JSON POST (생성)</Link>
+        {' | '}
+        <Link to="/todo-patch">JSON PATCH (수정)</Link>
+        {' | '}
+        <Link to="/todo-delete">JSON DELETE (삭제)</Link>
       </nav>
 
       <hr />
@@ -23,12 +32,12 @@ export default function App() {
           path="/"
           element={<p>위에서 페이지를 선택하세요.</p>}
         />
-        {/* /before-parse → 상태코드·헤더·본문 텍스트 (파싱 전) */}
         <Route path="/before-parse" element={<BeforeParse />} />
-        {/* /todo-get → TodoGet 컴포넌트 (HTTP GET + JSON) */}
         <Route path="/todo-get" element={<TodoGet />} />
-        {/* /todo-list → TodoList 컴포넌트 (HTTP GET + JSON) */}
         <Route path="/todo-list" element={<TodoList />} />
+        <Route path="/todo-post" element={<TodoPost />} />
+        <Route path="/todo-patch" element={<TodoPatch />} />
+        <Route path="/todo-delete" element={<TodoDelete />} />
       </Routes>
     </div>
   )

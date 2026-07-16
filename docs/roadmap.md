@@ -24,11 +24,36 @@
 
 자료: [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 
+### 공통
+
 - [x] Vite + React 프로젝트 구성 (yarn, node-modules)
 - [x] JSONPlaceholder 응답 구조 확인
-- [x] React에서 GET 요청으로 JSON 수신
+- [x] 페이지별 라우팅 구성 (react-router-dom)
+
+### GET 연동
+
+- [x] 파싱 전 응답 확인 (`response.text()`)
+- [x] 단건 조회 (`GET /todos/1`)
 - [x] JSON 파싱 후 화면에 표시
-- [x] 목록 조회 및 로딩/에러 처리
+- [x] 목록 조회 (`GET /todos`)
+- [x] 로딩/에러 처리
+
+### POST 연동
+
+- [x] 생성 요청 (`POST /todos`)
+- [x] 요청 body에 JSON 전송
+- [x] 응답 JSON 화면에 표시
+
+### PATCH 연동
+
+- [ ] 일부 수정 요청 (`PATCH /todos/1`)
+- [ ] 요청 body에 JSON 전송
+- [ ] 응답 JSON 화면에 표시
+
+### DELETE 연동
+
+- [ ] 삭제 요청 (`DELETE /todos/1`)
+- [ ] 응답 처리
 
 ---
 

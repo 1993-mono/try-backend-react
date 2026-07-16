@@ -7,7 +7,7 @@ export default function TodoGet() {
   useEffect(() => {
     // HTTP GET 요청 → REST API 창구(/todos/1) 호출
     fetch('https://jsonplaceholder.typicode.com/todos/1')
-      // 응답 본문(텍스트)을 JSON으로 파싱
+      // JSON 문자열 → JS 객체로 변환
       .then((response) => response.json())
       // 파싱된 객체를 상태에 저장 → 화면이 다시 그려짐
       .then((data) => setTodo(data))
