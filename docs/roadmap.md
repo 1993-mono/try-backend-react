@@ -30,6 +30,8 @@
 - [x] JSONPlaceholder 응답 구조 확인
 - [x] 페이지별 라우팅 구성 (react-router-dom)
 
+
+
 ### GET 연동
 
 - [x] 파싱 전 응답 확인 (`response.text()`)
@@ -38,16 +40,26 @@
 - [x] 목록 조회 (`GET /todos`)
 - [x] 로딩/에러 처리
 
+
+
 ### POST 연동
 
 - [x] 생성 요청 (`POST /todos`)
 - [x] 요청 body에 JSON 전송
 - [x] 응답 JSON 화면에 표시
 
+
+
 ### PATCH 연동
 
-- [ ] 일부 수정 요청 (`PATCH /todos/1`)
-- [ ] 요청 body에 JSON 전송
+- [x] 일부 수정 요청 (`PATCH /todos/1`)
+- [x] 요청 body에 JSON 전송
+- [x] 응답 JSON 화면에 표시
+
+### PUT 연동
+
+- [ ] 전체 수정 요청 (`PUT /todos/1`)
+- [ ] 요청 body에 JSON 전송 (자원 교체에 가깝게)
 - [ ] 응답 JSON 화면에 표시
 
 ### DELETE 연동
@@ -56,6 +68,8 @@
 - [ ] 응답 처리
 
 ---
+
+
 
 ## 2. (이후) 백엔드 기초
 

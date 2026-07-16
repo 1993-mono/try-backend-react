@@ -4,6 +4,7 @@ import TodoGet from './pages/TodoGet.jsx'
 import TodoList from './pages/TodoList.jsx'
 import TodoPost from './pages/TodoPost.jsx'
 import TodoPatch from './pages/TodoPatch.jsx'
+import TodoPut from './pages/TodoPut.jsx'
 import TodoDelete from './pages/TodoDelete.jsx'
 
 export default function App() {
@@ -22,6 +23,8 @@ export default function App() {
         {' | '}
         <Link to="/todo-patch">JSON PATCH (수정)</Link>
         {' | '}
+        <Link to="/todo-put">JSON PUT (교체)</Link>
+        {' | '}
         <Link to="/todo-delete">JSON DELETE (삭제)</Link>
       </nav>
 
@@ -37,6 +40,7 @@ export default function App() {
         <Route path="/todo-list" element={<TodoList />} />
         <Route path="/todo-post" element={<TodoPost />} />
         <Route path="/todo-patch" element={<TodoPatch />} />
+        <Route path="/todo-put" element={<TodoPut />} />
         <Route path="/todo-delete" element={<TodoDelete />} />
       </Routes>
     </div>

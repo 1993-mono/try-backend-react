@@ -8,7 +8,9 @@
 
 | 개념 | 한 줄 |
 |------|--------|
-| **JSON** | 데이터 **형식** (XML 등도 있음) |
+| **JSON** (형식) | 데이터 **형식** (XML 등도 있음) |
+| **`JSON`** (JS 객체) | 문자열 ↔ 객체 변환용 **전역 내장 객체** (`stringify` / `parse`) |
+| **`response`** | `fetch`가 돌려주는 **응답 객체** (그 요청 전용) |
 | **API** | 프로그램끼리 상호작용하는 **창구·접점** (종류가 다양함) |
 | **REST** | 그 창구를 만드는 **설계 방식(스타일)** 중 하나 (URL + method로 자원을 다룸) |
 | **REST API** | REST 규칙으로 설계한 API (주고받는 데이터는 **주로** JSON) |
@@ -311,6 +313,120 @@ React의 `fetch`는 같은 HTTP 요청을 **코드로** 보내는 것이다.
 1. `fetch(url)`로 요청
 2. `response.json()`으로 객체 변환
 3. 상태에 넣고 화면에 표시
+
+보낼 때(`POST` 등)는 반대로, 객체를 문자열로 만들어 body에 넣는다.
+
+---
+
+## 6-1. 데이터 형식 JSON vs JS의 `JSON` 객체
+
+이름이 같아서 헷갈리기 쉽다. **둘은 다르다.**
+
+| 말 | 무엇인가 |
+|----|----------|
+| **json** (형식) | 네트워크·파일로 오가는 **텍스트 데이터 형식** (1절에서 말한 것) |
+| **`JSON`** (대문자) | 자바스크립트가 미리 만들어 둔 **전역 내장 객체** (변수로 내가 만든 게 아님) |
+
+`JSON`은 어디서든 쓸 수 있는 **도구 상자**이고, 자주 쓰는 기능은 두 가지다.
+
+| 메서드 | 역할 | 방향 |
+|--------|------|------|
+| `JSON.stringify(...)` | 객체 → JSON **문자열** | 보낼 때 |
+| `JSON.parse(...)` | JSON **문자열** → 객체 | 받을 때 (문자열이 이미 있을 때) |
+
+이름 풀이: **stringify** = string + -ify → “문자열화한다”.
+
+```js
+JSON.stringify({ a: 1 })  // '{"a":1}'  ← 문자열
+JSON.parse('{"a":1}')     // { a: 1 }   ← 객체
+```
+
+포인트:
+
+- 소문자 **json** = 데이터 형식
+- 대문자 **`JSON`** = 그걸 다루기 위한 JS **전역 객체**
+- `JSON`은 변수가 아니다
+
+---
+
+## 6-2. `response`란? (`fetch`가 주는 객체)
+
+`fetch(url)`가 성공하면 **Response 객체**를 돌려준다.  
+보통 그걸 `response`라는 이름으로 받는다.
+
+```js
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then((response) => { /* ... */ })
+```
+
+| | `response` | `JSON` |
+|--|------------|--------|
+| 어디서 오나 | **그번 `fetch` 요청**의 결과 | JS 환경에 **처음부터** 있음 |
+| 범위 | 그 응답 **하나**에만 해당 | **전역**에서 언제든 사용 |
+| 하는 일 | 상태 코드, 헤더, 본문 등 **응답 정보** 제공 | 문자열 ↔ 객체 **변환** |
+
+`response`에 자주 쓰는 것:
+
+- `response.status` — 상태 코드 (예: `200`)
+- `response.json()` — 본문을 읽어 JSON으로 파싱 (Promise 반환)
+- `response.text()` — 본문을 그냥 문자열로 읽기
+
+한 줄:
+
+> **`response`** = `fetch`가 지원해 주는 **이번 응답 객체**  
+> **`JSON`** = 전역에서 쓰는 **변환 도구**
+
+---
+
+## 6-3. `response.json()` vs `JSON.parse(...)`
+
+둘 다 “JSON → 객체” 쪽이지만, **입력이 다르다.**
+
+### `response.json()`
+
+`fetch`의 Response 객체 **메서드**다.
+
+1. 응답 **본문(body)을 읽고**
+2. 그 문자열을 JSON으로 **파싱**하고
+3. 결과를 **Promise**로 돌려준다
+
+```js
+fetch('/todos/1')
+  .then((response) => response.json())  // Promise → 객체
+  .then((data) => console.log(data))
+```
+
+### `JSON.parse(...)`
+
+**이미 준비된 문자열**만 받는다.  
+`response`(Response 객체)를 그대로 넣으면 안 된다.
+
+```js
+JSON.parse(response)  // ❌ Response 객체라서 안 됨
+```
+
+비슷하게 쓰려면:
+
+```js
+const text = await response.text()  // 본문 → 문자열
+const data = JSON.parse(text)       // 문자열 → 객체
+```
+
+### 비교
+
+| | `response.json()` | `JSON.parse(...)` |
+|--|-------------------|-------------------|
+| 입력 | Response 객체 | JSON **문자열** |
+| 하는 일 | body 읽기 + 파싱 | 파싱만 |
+| 반환 | Promise | 바로 객체 |
+
+관계:
+
+> `response.json()` ≈ `JSON.parse(await response.text())`
+
+실무에서는 `fetch` 응답을 받을 때 **`response.json()`** 을 쓰고,  
+이미 문자열로 가지고 있을 때만 **`JSON.parse`** 를 쓴다.  
+보낼 때는 **`JSON.stringify`** 로 body를 만든다.
 
 ---
 

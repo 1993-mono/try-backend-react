@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-export default function TodoPatch() {
+export default function TodoPut() {
+  const [title, setTitle] = useState('수정된 제목')
   const [completed, setCompleted] = useState(true)
   const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -12,19 +13,20 @@ export default function TodoPatch() {
     setError(null)
     setResult(null)
 
-    // HTTP PATCH → REST API 창구 /todos/1 (일부 수정)
-    // PUT과 달리 body에 "바꿀 필드만" 넣는다
+    // HTTP PUT → REST API 창구 /todos/1 (전체 교체에 가깝게)
+    // PATCH: 바꿀 필드만 / PUT: 자원 전체를 새 내용으로 덮는 느낌
     fetch('https://jsonplaceholder.typicode.com/todos/1', {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      // 예: completed만 수정 (title 등은 보내지 않음)
       body: JSON.stringify({
+        id: 1,
+        title: title,
         completed: completed,
+        userId: 1,
       }),
     })
-      // 응답 처리 패턴은 POST/GET과 동일
       .then((response) => {
         if (!response.ok) {
           throw new Error(`요청 실패: ${response.status}`)
@@ -32,7 +34,6 @@ export default function TodoPatch() {
         return response.json()
       })
       .then((data) => {
-        // JSONPlaceholder는 수정된 것처럼 보이는 객체를 돌려줌 (실제 DB 반영 없음)
         setResult(data)
         setLoading(false)
       })
@@ -44,10 +45,15 @@ export default function TodoPatch() {
 
   return (
     <div>
-      <h1>JSON PATCH (수정)</h1>
-      <p>/todos/1 의 completed만 부분 수정합니다.</p>
+      <h1>JSON PUT (전체 수정)</h1>
+      <p>/todos/1 을 통째로 교체하는 요청입니다. (PATCH는 일부만)</p>
 
       <form onSubmit={handleSubmit}>
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="title"
+        />
         <label>
           <input
             type="checkbox"
@@ -57,7 +63,7 @@ export default function TodoPatch() {
           completed
         </label>
         <button type="submit" disabled={loading}>
-          {loading ? '전송 중...' : 'PATCH로 수정'}
+          {loading ? '전송 중...' : 'PUT으로 교체'}
         </button>
       </form>
 
