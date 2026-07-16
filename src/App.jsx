@@ -11,30 +11,20 @@ export default function App() {
   return (
     <div>
       <nav>
-        <Link to="/">홈</Link>
-        {' | '}
-        <Link to="/before-parse">파싱 전</Link>
-        {' | '}
-        <Link to="/todo-get">JSON GET (단건)</Link>
-        {' | '}
-        <Link to="/todo-list">JSON GET (목록)</Link>
-        {' | '}
-        <Link to="/todo-post">JSON POST (생성)</Link>
-        {' | '}
-        <Link to="/todo-patch">JSON PATCH (수정)</Link>
-        {' | '}
-        <Link to="/todo-put">JSON PUT (교체)</Link>
-        {' | '}
+        <Link to="/">홈</Link>&nbsp;|&nbsp;
+        <Link to="/before-parse">파싱 전</Link>&nbsp;|&nbsp;
+        <Link to="/todo-get">JSON GET (단건)</Link>&nbsp;|&nbsp;
+        <Link to="/todo-list">JSON GET (목록)</Link>&nbsp;|&nbsp;
+        <Link to="/todo-post">JSON POST (생성)</Link>&nbsp;|&nbsp;
+        <Link to="/todo-patch">JSON PATCH (수정)</Link>&nbsp;|&nbsp;
+        <Link to="/todo-put">JSON PUT (교체)</Link>&nbsp;|&nbsp;
         <Link to="/todo-delete">JSON DELETE (삭제)</Link>
       </nav>
 
       <hr />
 
       <Routes>
-        <Route
-          path="/"
-          element={<p>위에서 페이지를 선택하세요.</p>}
-        />
+        <Route path="/" element={<p>위에서 페이지를 선택하세요.</p>} />
         <Route path="/before-parse" element={<BeforeParse />} />
         <Route path="/todo-get" element={<TodoGet />} />
         <Route path="/todo-list" element={<TodoList />} />

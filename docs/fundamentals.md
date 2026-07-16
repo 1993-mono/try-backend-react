@@ -1,6 +1,9 @@
-# Fundamentals
+# 기초 개념
 
-프론트·백엔드 공통으로 알아두면 좋은 기초 정리.
+프론트·백엔드 공통으로 알아두면 좋은 기초 정리.  
+(JSON · API · REST · HTTP)
+
+다음 단계(상태 코드·헤더·URL 심화): `docs/http-advanced.md`
 
 ---
 
@@ -298,6 +301,8 @@ JSONPlaceholder는 연습용 **REST API**이고, 응답이 JSON이다.
 
 주소창에 URL을 입력하는 것도 사실상 **HTTP GET 요청**이다.  
 React의 `fetch`는 같은 HTTP 요청을 **코드로** 보내는 것이다.
+
+상태 코드·헤더·경로/쿼리를 더 깊게 보려면 → `docs/http-advanced.md`
 
 ---
 
