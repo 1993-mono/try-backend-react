@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function Header() {
   const [result, setResult] = useState(null)
@@ -11,7 +12,7 @@ export default function Header() {
 
     try {
       const response = await fetch(
-        'https://jsonplaceholder.typicode.com/todos/1'
+        `${API_BASE}/todos/1`
       )
 
       if (!response.ok) {
@@ -46,7 +47,7 @@ export default function Header() {
 
     try {
       const response = await fetch(
-        'https://jsonplaceholder.typicode.com/todos',
+        `${API_BASE}/todos`,
         {
           method: 'POST',
           headers: requestHeaders,

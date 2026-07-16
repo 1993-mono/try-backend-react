@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function TodoPut() {
   const [title, setTitle] = useState('수정된 제목')
@@ -15,7 +16,7 @@ export default function TodoPut() {
 
     // HTTP PUT → REST API 창구 /todos/1 (전체 교체에 가깝게)
     // PATCH: 바꿀 필드만 / PUT: 자원 전체를 새 내용으로 덮는 느낌
-    fetch('https://jsonplaceholder.typicode.com/todos/1', {
+    fetch(`${API_BASE}/todos/1`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

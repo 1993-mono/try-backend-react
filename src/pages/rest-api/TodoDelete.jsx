@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function TodoDelete() {
   const [status, setStatus] = useState(null)
@@ -14,7 +15,7 @@ export default function TodoDelete() {
 
     // HTTP DELETE → REST API 창구 /todos/1 (삭제)
     // 보통 body·Content-Type 없음 (보낼 수정 데이터가 없음)
-    fetch('https://jsonplaceholder.typicode.com/todos/1', {
+    fetch(`${API_BASE}/todos/1`, {
       method: 'DELETE',
     })
       // async/await는 DELETE와 무관함.

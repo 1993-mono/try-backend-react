@@ -10,6 +10,7 @@ import TodoDelete from './pages/rest-api/TodoDelete.jsx'
 
 import StatusCode from './pages/http-advanced/StatusCode.jsx'
 import Header from './pages/http-advanced/Header.jsx'
+import UrlQuery from './pages/http-advanced/UrlQuery.jsx'
 
 export default function App() {
   return (
@@ -45,6 +46,8 @@ export default function App() {
           <Link to="/http-advanced/status-code">상태 코드</Link>
           {' | '}
           <Link to="/http-advanced/header">헤더</Link>
+          {' | '}
+          <Link to="/http-advanced/url-query">URL 구조</Link>
         </p>
       </nav>
 
@@ -63,6 +66,7 @@ export default function App() {
 
         <Route path="/http-advanced/status-code" element={<StatusCode />} />
         <Route path="/http-advanced/header" element={<Header />} />
+        <Route path="/http-advanced/url-query" element={<UrlQuery />} />
       </Routes>
     </div>
   )

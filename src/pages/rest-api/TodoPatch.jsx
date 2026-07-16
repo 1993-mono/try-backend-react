@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function TodoPatch() {
   const [completed, setCompleted] = useState(true)
@@ -14,7 +15,7 @@ export default function TodoPatch() {
 
     // HTTP PATCH → REST API 창구 /todos/1 (일부 수정)
     // PUT과 달리 body에 "바꿀 필드만" 넣는다
-    fetch('https://jsonplaceholder.typicode.com/todos/1', {
+    fetch(`${API_BASE}/todos/1`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

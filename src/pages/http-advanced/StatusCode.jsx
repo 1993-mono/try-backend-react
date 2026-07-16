@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function StatusCode() {
   const [result, setResult] = useState(null)
@@ -74,7 +75,7 @@ export default function StatusCode() {
         <button
           type="button"
           onClick={() =>
-            request('https://jsonplaceholder.typicode.com/todos/1')
+            request(`${API_BASE}/todos/1`)
           }
         >
           있는 자원 (기대: 200)
@@ -83,7 +84,7 @@ export default function StatusCode() {
         <button
           type="button"
           onClick={() =>
-            request('https://jsonplaceholder.typicode.com/todos/99999')
+            request(`${API_BASE}/todos/99999`)
           }
         >
           없는 자원 (기대: 404)

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function TodoList() {
   const [todos, setTodos] = useState([])
@@ -10,7 +11,7 @@ export default function TodoList() {
     setError(null)
 
     // GET /todos → 할 일 목록(배열) JSON
-    fetch('https://jsonplaceholder.typicode.com/todos')
+    fetch(`${API_BASE}/todos`)
       .then((response) => {
         // HTTP 상태 코드가 실패면 에러로 처리
         if (!response.ok) {

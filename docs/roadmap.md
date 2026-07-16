@@ -89,16 +89,16 @@ HTTP·REST·JSON·method (0~1, 완료)
 
 ### 헤더
 
-- [ ] 헤더 = body 밖의 부가 정보
-- [ ] `Content-Type` (요청/응답에서 JSON임을 알리는 역할)
-- [ ] DevTools Network에서 요청·응답 헤더 확인
+- [x] 헤더 = body 밖의 부가 정보
+- [x] `Content-Type` (요청/응답에서 JSON임을 알리는 역할)
+- [x] DevTools Network에서 요청·응답 헤더 확인
 
 ### URL 구조
 
-- [ ] 경로(path) — `/todos/1` (어떤 자원인지)
-- [ ] 쿼리(query) — `?userId=1` (필터·검색 등)
-- [ ] 경로 vs 쿼리 역할 구분
-- [ ] 예: `GET /todos?userId=1` 실습 (선택)
+- [x] 경로(path) — `/todos/1` (어떤 자원인지)
+- [x] 쿼리(query) — `?userId=1` (필터·검색 등)
+- [x] 경로 vs 쿼리 역할 구분
+- [x] 예: `GET /todos?userId=1` 실습 (선택)
 
 ---
 
@@ -115,14 +115,8 @@ HTTP 심화 다음. “한 번 보낸 fetch”를 그림으로 고정하고, CRU
 ### 자원(resource)과 CRUD
 
 - [ ] 메서드를 개별이 아니라 한 자원의 흐름으로 보기
-    ```
-    (목록 → 생성 → 조회 → 수정 → 삭제)
-    ```
 - [ ] PUT vs PATCH 역할 정리 (교체 vs 일부 수정)
 - [ ] (선택) 한 화면에서 CRUD를 묶는 미니 실습
-    ```
-    ※ JSONPlaceholder는 변경이 가짜라, “요청은 성공해도 목록에 안 남을 수 있음”을 알고 진행
-    ```
 
 ---
 

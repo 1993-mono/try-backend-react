@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function TodoGet() {
   // todo: API에서 받은 JSON을 담아 두는 상태
@@ -6,7 +7,7 @@ export default function TodoGet() {
 
   useEffect(() => {
     // HTTP GET 요청 → REST API 창구(/todos/1) 호출
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch(`${API_BASE}/todos/1`)
       // JSON 문자열 → JS 객체로 변환
       .then((response) => response.json())
       // 파싱된 객체를 상태에 저장 → 화면이 다시 그려짐

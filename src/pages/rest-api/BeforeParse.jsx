@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function BeforeParse() {
   const [status, setStatus] = useState(null)
@@ -14,7 +15,7 @@ export default function BeforeParse() {
     setError(null)
 
     // HTTP GET — response.json() 없이 응답 상자와 본문 텍스트를 본다
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch(`${API_BASE}/todos/1`)
       .then(async (response) => {
         setStatus(response.status)
         setOk(response.ok)

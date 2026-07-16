@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../../config/api'
 
 export default function TodoPost() {
   const [title, setTitle] = useState('')
@@ -13,7 +14,7 @@ export default function TodoPost() {
     setResult(null)
 
     // HTTP POST → REST API 창구 /todos (생성)
-    fetch('https://jsonplaceholder.typicode.com/todos', {
+    fetch(`${API_BASE}/todos`, {
       method: 'POST',
       headers: {
         // 본문이 JSON임을 서버에 알림
