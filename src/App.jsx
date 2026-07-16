@@ -1,4 +1,5 @@
 import { Link, Routes, Route } from 'react-router-dom'
+import { HiHome } from 'react-icons/hi2'
 
 import BeforeParse from './pages/rest-api/BeforeParse.jsx'
 import TodoGet from './pages/rest-api/TodoGet.jsx'
@@ -17,7 +18,9 @@ export default function App() {
     <div>
       <nav>
         <p>
-          <Link to="/">홈</Link>
+          <Link to="/" className="nav-home">
+            <HiHome aria-hidden="true" />
+          </Link>
         </p>
 
         {/* 로드맵 1단계 — 폴더: pages/rest-api */}
