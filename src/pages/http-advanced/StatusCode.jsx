@@ -99,7 +99,12 @@ export default function StatusCode() {
           <p>ok: {String(result.ok)}</p>
           <p>content-type: {result.contentType}</p>
           {result.data && (
-            <pre>{JSON.stringify(result.data, null, 2)}</pre>
+            <>
+              {/* JSON.stringify(값, replacer, space)
+                - null : replacer 없음 → 모든 속성 그대로 직렬화
+                - 2    : 들여쓰기 공백 2칸 (읽기 쉽게 줄바꿈·정렬) */}
+              <pre>{JSON.stringify(result.data, null, 2)}</pre>
+            </>
           )}
         </div>
       )}

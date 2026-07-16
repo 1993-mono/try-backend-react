@@ -7,7 +7,9 @@ import TodoPost from './pages/rest-api/TodoPost.jsx'
 import TodoPatch from './pages/rest-api/TodoPatch.jsx'
 import TodoPut from './pages/rest-api/TodoPut.jsx'
 import TodoDelete from './pages/rest-api/TodoDelete.jsx'
+
 import StatusCode from './pages/http-advanced/StatusCode.jsx'
+import Header from './pages/http-advanced/Header.jsx'
 
 export default function App() {
   return (
@@ -41,6 +43,8 @@ export default function App() {
           <strong>HTTP 심화</strong>
           <br />
           <Link to="/http-advanced/status-code">상태 코드</Link>
+          {' | '}
+          <Link to="/http-advanced/header">헤더</Link>
         </p>
       </nav>
 
@@ -58,6 +62,7 @@ export default function App() {
         <Route path="/rest-api/todo-delete" element={<TodoDelete />} />
 
         <Route path="/http-advanced/status-code" element={<StatusCode />} />
+        <Route path="/http-advanced/header" element={<Header />} />
       </Routes>
     </div>
   )
