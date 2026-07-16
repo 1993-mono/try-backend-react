@@ -17,6 +17,11 @@ export default function TodoDelete() {
     fetch('https://jsonplaceholder.typicode.com/todos/1', {
       method: 'DELETE',
     })
+      // async/await는 DELETE와 무관함.
+      // await는 async 함수 안에서만 쓸 수 있는 키워드(내장 객체 아님).
+      // .then()은 fetch(네트워크) 완료만 기다리고,
+      // response.text() 본문 읽기는 또 다른 Promise라서
+      // 여기서는 await로 기다린다. (다른 페이지는 .then 체이닝으로 같은 일 처리)
       .then(async (response) => {
         // 성공 여부는 주로 상태 코드로 판단
         setStatus(response.status)
