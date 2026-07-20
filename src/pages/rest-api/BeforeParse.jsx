@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseObjectHeaders } from '@/config/api'
 
 export default function BeforeParse() {
   const [status, setStatus] = useState(null)
@@ -15,7 +15,9 @@ export default function BeforeParse() {
     setError(null)
 
     // HTTP GET — response.json() 없이 응답 상자와 본문 텍스트를 본다
-    fetch(`${API_BASE}/todos/1`)
+    fetch(`${API_BASE}/todos?id=eq.1&select=*`, {
+      headers: supabaseObjectHeaders,
+    })
       .then(async (response) => {
         setStatus(response.status)
         setOk(response.ok)

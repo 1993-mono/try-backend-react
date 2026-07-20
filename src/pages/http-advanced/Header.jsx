@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseHeaders, supabaseObjectHeaders } from '@/config/api'
 
 export default function Header() {
   const [result, setResult] = useState(null)
@@ -12,7 +12,8 @@ export default function Header() {
 
     try {
       const response = await fetch(
-        `${API_BASE}/todos/1`
+        `${API_BASE}/todos?id=eq.1&select=*`,
+        { headers: supabaseObjectHeaders },
       )
 
       if (!response.ok) {
@@ -24,6 +25,14 @@ export default function Header() {
       setResult({
         kind: 'GET',
         status: response.status,
+        // 요청에 넣은 헤더 (Supabase 인증 포함)
+        requestHeaders: {
+          'Content-Type': supabaseObjectHeaders['Content-Type'],
+          Accept: supabaseObjectHeaders.Accept,
+          // 키 값은 화면에 길게 안 보여 줌
+          apikey: '(설정됨)',
+          Authorization: 'Bearer (설정됨)',
+        },
         // 응답 헤더 (서버가 알려준 것)
         responseHeaders: {
           contentType: response.headers.get('content-type'),
@@ -40,10 +49,8 @@ export default function Header() {
     setResult(null)
     setError(null)
 
-    // 내가 보내는 요청 헤더 (코드에 적은 값)
-    const requestHeaders = {
-      'Content-Type': 'application/json',
-    }
+    // 내가 보내는 요청 헤더 (Supabase용)
+    const requestHeaders = { ...supabaseHeaders }
 
     try {
       const response = await fetch(
@@ -54,9 +61,9 @@ export default function Header() {
           body: JSON.stringify({
             title: '헤더 실습',
             completed: false,
-            userId: 1,
+            user_id: 1,
           }),
-        }
+        },
       )
 
       if (!response.ok) {
@@ -67,14 +74,19 @@ export default function Header() {
 
       setResult({
         kind: 'POST',
-        // 요청 헤더 (내가 넣은 것)
-        requestHeaders,
+        // 요청 헤더 (화면에 키 원문은 숨김)
+        requestHeaders: {
+          'Content-Type': requestHeaders['Content-Type'],
+          Prefer: requestHeaders.Prefer,
+          apikey: '(설정됨)',
+          Authorization: 'Bearer (설정됨)',
+        },
         // 응답 헤더 (서버가 돌려준 것)
         responseHeaders: {
           contentType: response.headers.get('content-type'),
         },
         status: response.status, // POST 성공 시 201도 확인해보기
-        data,
+        data: Array.isArray(data) ? data[0] : data,
       })
     } catch (err) {
       setError(err.message)
@@ -86,6 +98,7 @@ export default function Header() {
       <h1>헤더 실습</h1>
       <p>
         body = JSON 내용 / headers = 타입·인증 등 부가 정보
+        (Supabase는 apikey · Authorization 필수)
       </p>
 
       <p>
@@ -111,7 +124,16 @@ export default function Header() {
           <p>요청 종류: {result.kind}</p>
 
           {result.requestHeaders && (
-            <p>요청 Content-Type: {result.requestHeaders['Content-Type']}</p>
+            <>
+              <p>요청 Content-Type: {result.requestHeaders['Content-Type']}</p>
+              {result.requestHeaders.Accept && (
+                <p>요청 Accept: {result.requestHeaders.Accept}</p>
+              )}
+              {result.requestHeaders.Prefer && (
+                <p>요청 Prefer: {result.requestHeaders.Prefer}</p>
+              )}
+              <p>요청 apikey: {result.requestHeaders.apikey}</p>
+            </>
           )}
 
           <p>응답 status: {result.status}</p>

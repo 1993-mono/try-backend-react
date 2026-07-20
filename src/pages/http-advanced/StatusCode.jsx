@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseObjectHeaders } from '@/config/api'
 
 export default function StatusCode() {
   const [result, setResult] = useState(null)
@@ -31,14 +31,18 @@ export default function StatusCode() {
   *
   * [주의 — fetch + HTTP]
   * - 404, 500 같은 HTTP 에러는 catch로 안 잡힌다 → response.ok / response.status로 본다
+  *
+  * [Supabase 참고]
+  * - ?id=eq.99999 만 쓰면 빈 배열 [] + 200 이 올 수 있음
+  * - Accept: application/vnd.pgrst.object+json 이면 0건일 때 보통 406
   */
-  // url을 바꿔가며 200 / 404를 비교한다
-  async function request(url) {
+  // headers를 바꿔가며 200 / 4xx를 비교한다
+  async function request(url, headers) {
     setResult(null)
     setError(null)
 
     try {
-      const response = await fetch(url)
+      const response = await fetch(url, { headers })
 
       // body보다 먼저 status / ok 를 본다
       const info = {
@@ -75,7 +79,10 @@ export default function StatusCode() {
         <button
           type="button"
           onClick={() =>
-            request(`${API_BASE}/todos/1`)
+            request(
+              `${API_BASE}/todos?id=eq.1&select=*`,
+              supabaseObjectHeaders,
+            )
           }
         >
           있는 자원 (기대: 200)
@@ -84,11 +91,21 @@ export default function StatusCode() {
         <button
           type="button"
           onClick={() =>
-            request(`${API_BASE}/todos/99999`)
+            request(
+              `${API_BASE}/todos?id=eq.99999&select=*`,
+              supabaseObjectHeaders,
+            )
           }
         >
-          없는 자원 (기대: 404)
+          없는 자원 (기대: 406)
         </button>
+      </p>
+
+      <p>
+        <small>
+          Supabase는 경로 404 대신, 단건 Accept일 때 0건이면 보통 406을 줍니다.
+          (목록 헤더만 쓰면 빈 배열 + 200)
+        </small>
       </p>
 
       {error && <p>에러: {error}</p>}

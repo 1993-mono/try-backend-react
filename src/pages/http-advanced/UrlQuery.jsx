@@ -1,19 +1,22 @@
 import { useState } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseHeaders, supabaseObjectHeaders } from '@/config/api'
 
 export default function UrlQuery() {
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
 
-  // 경로(path) — /todos/1 → 자원 하나
+  // 단건 — Supabase는 /todos/1 경로 대신 ?id=eq.1 쿼리
   async function fetchByPath() {
     setResult(null)
     setError(null)
 
-    const url = `${API_BASE}/todos/1`
+    // id=eq.1 → 어느 행(필터) / select=* → 응답 컬럼 전부 (SELECT *)
+    const url = `${API_BASE}/todos?id=eq.1&select=*`
 
     try {
-      const response = await fetch(url)
+      const response = await fetch(url, {
+        headers: supabaseObjectHeaders,
+      })
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
@@ -22,9 +25,9 @@ export default function UrlQuery() {
       const data = await response.json()
 
       setResult({
-        kind: 'path', // 임의 라벨: 경로로 단건 조회
+        kind: 'id 필터 (단건)', // Supabase식 단건
         url,
-        dataType: 'object', // 단건 → 객체
+        dataType: 'object', // 단건 → 객체 (Accept object)
         count: 1,
         data,
       })
@@ -33,15 +36,17 @@ export default function UrlQuery() {
     }
   }
 
-  // 쿼리(query) — /todos?userId=1 → 조건에 맞는 목록
+  // 쿼리 — ?user_id=eq.1 → 조건에 맞는 목록
   async function fetchByQuery() {
     setResult(null)
     setError(null)
 
-    const url = `${API_BASE}/todos?userId=1`
+    const url = `${API_BASE}/todos?user_id=eq.1&select=*`
 
     try {
-      const response = await fetch(url)
+      const response = await fetch(url, {
+        headers: supabaseHeaders,
+      })
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
@@ -50,9 +55,9 @@ export default function UrlQuery() {
       const data = await response.json()
 
       setResult({
-        kind: 'query', // 임의 라벨: 쿼리로 필터
+        kind: 'user_id 필터 (목록)',
         url,
-        dataType: 'array', // 목록 → 배열
+        dataType: 'array',
         count: data.length,
         data,
       })
@@ -65,22 +70,22 @@ export default function UrlQuery() {
     <div>
       <h1>URL 구조 실습</h1>
       <p>
-        path = 어느 자원 / query = 어떻게 걸러서
+        Supabase: 단건도 쿼리(<code>id=eq.1</code>) / 목록 필터(<code>user_id=eq.1</code>)
       </p>
 
       <p>
         <button type="button" onClick={fetchByPath}>
-          GET /todos/1 (경로 — 단건)
+          GET …?id=eq.1 (단건)
         </button>
         {' '}
         <button type="button" onClick={fetchByQuery}>
-          GET /todos?userId=1 (쿼리 — 필터)
+          GET …?user_id=eq.1 (필터)
         </button>
       </p>
 
       <p>
         <small>
-          Network 탭에서 요청 URL 전체(path / ?userId=1)를 확인해 보세요
+          Network 탭에서 요청 URL 전체(?id=eq.1 / ?user_id=eq.1)를 확인해 보세요
         </small>
       </p>
 
@@ -97,7 +102,7 @@ export default function UrlQuery() {
             <ul>
               {result.data.slice(0, 5).map((todo) => (
                 <li key={todo.id}>
-                  #{todo.id} userId={todo.userId} — {todo.title}
+                  #{todo.id} user_id={todo.user_id} — {todo.title}
                 </li>
               ))}
             </ul>

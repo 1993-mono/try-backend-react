@@ -38,7 +38,7 @@ API (창구/접점)
 
 ```json
 {
-  "userId": 1,
+  "user_id": 1,
   "id": 1,
   "title": "delectus aut autem",
   "completed": false
@@ -216,7 +216,7 @@ REST는 “URL + method로 자원을 다룬다”는 설계이므로,
 프론트에서 먼저 다루는 것은 보통 **GET + JSON 응답**이다.  
 받이기만 있는 게 아니라 POST/PATCH처럼 **보내기**도 있다.
 
-JSONPlaceholder는 연습용 **REST API**이고, 응답이 JSON이다.
+실습 API는 **[Supabase](https://supabase.com/) Data API** — PostgreSQL `todos` 테이블에 대한 **REST API**이고, 응답·요청 body는 JSON이다. (CRUD는 **실 DB에 반영**된다.)
 
 ---
 
@@ -255,13 +255,16 @@ JSONPlaceholder는 연습용 **REST API**이고, 응답이 JSON이다.
 
 **2. URL** — 어디에 / 무엇에 대해
 
-예: `https://jsonplaceholder.typicode.com/todos/1`
+예: `https://<project-ref>.supabase.co/rest/v1/todos?id=eq.1`
 
 | 부분 | 예 | 의미 |
 |------|-----|------|
 | 스킴 | `https` | 암호화된 HTTP (HTTPS) |
-| 호스트 | `jsonplaceholder.typicode.com` | 어느 서버 |
-| 경로 | `/todos/1` | 어느 자원·경로 |
+| 호스트 | `<project-ref>.supabase.co` | Supabase 프로젝트 서버 |
+| 경로 | `/rest/v1/todos` | Data API · `todos` 테이블 |
+| 쿼리 | `?id=eq.1` | id가 1인 행 (PostgREST 필터) |
+
+Supabase는 **인증 헤더**(`apikey`, `Authorization`)가 필요하다. 자세한 예시는 `src/config/api.js` · `docs/http-advanced.md` 참고.
 
 **3. 헤더 (Header)** — 부가 정보  
 예: 본문 타입이 JSON이다, JSON으로 답해 달라는 식.
@@ -360,7 +363,10 @@ JSON.parse('{"a":1}')     // { a: 1 }   ← 객체
 보통 그걸 `response`라는 이름으로 받는다.
 
 ```js
-fetch('https://jsonplaceholder.typicode.com/todos/1')
+// API_BASE · supabaseHeaders → src/config/api.js
+fetch(`${API_BASE}/todos?id=eq.1&select=*`, {
+  headers: supabaseHeaders,
+})
   .then((response) => { /* ... */ })
 ```
 

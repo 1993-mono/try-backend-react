@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseHeaders } from '@/config/api'
 
 export default function TodoList() {
   const [todos, setTodos] = useState([])
@@ -11,7 +11,9 @@ export default function TodoList() {
     setError(null)
 
     // GET /todos → 할 일 목록(배열) JSON
-    fetch(`${API_BASE}/todos`)
+    fetch(`${API_BASE}/todos?select=*`, {
+      headers: supabaseHeaders,
+    })
       .then((response) => {
         // HTTP 상태 코드가 실패면 에러로 처리
         if (!response.ok) {
@@ -31,6 +33,7 @@ export default function TodoList() {
   }, [])
 
   if (loading) return <p>불러오는 중...</p>
+
   if (error) return <p>에러: {error}</p>
 
   return (

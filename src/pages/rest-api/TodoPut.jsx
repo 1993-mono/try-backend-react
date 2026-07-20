@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseObjectHeaders } from '@/config/api'
 
 export default function TodoPut() {
   const [title, setTitle] = useState('수정된 제목')
@@ -14,18 +14,17 @@ export default function TodoPut() {
     setError(null)
     setResult(null)
 
-    // HTTP PUT → REST API 창구 /todos/1 (전체 교체에 가깝게)
-    // PATCH: 바꿀 필드만 / PUT: 자원 전체를 새 내용으로 덮는 느낌
-    fetch(`${API_BASE}/todos/1`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    // Supabase(PostgREST)는 경로 /todos/1 PUT보다
+    // PATCH로 "보낼 필드를 전부" 넣는 방식이 전체 교체에 가깝다.
+    // (학습용: PATCH vs PUT 개념은 body에 넣는 범위로 비교)
+    fetch(`${API_BASE}/todos?id=eq.1`, {
+      method: 'PATCH',
+      headers: supabaseObjectHeaders,
+      // 자원 필드 전체를 보냄 (일부만 보내는 PATCH 실습과 대비)
       body: JSON.stringify({
-        id: 1,
         title: title,
         completed: completed,
-        userId: 1,
+        user_id: 1,
       }),
     })
       .then((response) => {
@@ -47,7 +46,10 @@ export default function TodoPut() {
   return (
     <div>
       <h1>JSON PUT (전체 수정)</h1>
-      <p>/todos/1 을 통째로 교체하는 요청입니다. (PATCH는 일부만)</p>
+      <p>
+        id=1 을 통째로 덮는 느낌으로, title·completed·user_id를 모두 보냅니다.
+        (Supabase에서는 PATCH + 전체 필드로 실습)
+      </p>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -64,7 +66,7 @@ export default function TodoPut() {
           completed
         </label>
         <button type="submit" disabled={loading}>
-          {loading ? '전송 중...' : 'PUT으로 교체'}
+          {loading ? '전송 중...' : '전체 필드로 교체'}
         </button>
       </form>
 
@@ -76,7 +78,7 @@ export default function TodoPut() {
           <p>id: {result.id}</p>
           <p>title: {result.title}</p>
           <p>completed: {result.completed ? '완료' : '미완료'}</p>
-          <p>userId: {result.userId}</p>
+          <p>user_id: {result.user_id}</p>
         </div>
       )}
     </div>

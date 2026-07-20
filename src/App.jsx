@@ -1,17 +1,20 @@
 import { Link, Routes, Route } from 'react-router-dom'
 import { HiHome } from 'react-icons/hi2'
 
-import BeforeParse from './pages/rest-api/BeforeParse.jsx'
-import TodoGet from './pages/rest-api/TodoGet.jsx'
-import TodoList from './pages/rest-api/TodoList.jsx'
-import TodoPost from './pages/rest-api/TodoPost.jsx'
-import TodoPatch from './pages/rest-api/TodoPatch.jsx'
-import TodoPut from './pages/rest-api/TodoPut.jsx'
-import TodoDelete from './pages/rest-api/TodoDelete.jsx'
+import BeforeParse from '@/pages/rest-api/BeforeParse.jsx'
+import TodoGet from '@/pages/rest-api/TodoGet.jsx'
+import TodoList from '@/pages/rest-api/TodoList.jsx'
+import TodoPost from '@/pages/rest-api/TodoPost.jsx'
+import TodoPatch from '@/pages/rest-api/TodoPatch.jsx'
+import TodoPut from '@/pages/rest-api/TodoPut.jsx'
+import TodoDelete from '@/pages/rest-api/TodoDelete.jsx'
 
-import StatusCode from './pages/http-advanced/StatusCode.jsx'
-import Header from './pages/http-advanced/Header.jsx'
-import UrlQuery from './pages/http-advanced/UrlQuery.jsx'
+import StatusCode from '@/pages/http-advanced/StatusCode.jsx'
+import Header from '@/pages/http-advanced/Header.jsx'
+import UrlQuery from '@/pages/http-advanced/UrlQuery.jsx'
+
+import RequestResponse from '@/pages/http-model/RequestResponse.jsx'
+import ResourceCrud from '@/pages/http-model/ResourceCrud.jsx'
 
 export default function App() {
   return (
@@ -52,6 +55,15 @@ export default function App() {
           {' | '}
           <Link to="/http-advanced/url-query">URL 구조</Link>
         </p>
+
+        {/* 로드맵 3단계 — 폴더: pages/http-model */}
+        <p>
+          <strong>HTTP 모델</strong>
+          <br />
+          <Link to="/http-model/request-response">요청-응답 한 바퀴</Link>
+          {' | '}
+          <Link to="/http-model/resource-crud">자원 CRUD</Link>
+        </p>
       </nav>
 
       <hr />
@@ -70,6 +82,9 @@ export default function App() {
         <Route path="/http-advanced/status-code" element={<StatusCode />} />
         <Route path="/http-advanced/header" element={<Header />} />
         <Route path="/http-advanced/url-query" element={<UrlQuery />} />
+
+        <Route path="/http-model/request-response" element={<RequestResponse />} />
+        <Route path="/http-model/resource-crud" element={<ResourceCrud />} />
       </Routes>
     </div>
   )

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { API_BASE } from '../../config/api'
+import { API_BASE, supabaseHeaders } from '@/config/api'
 
 export default function TodoDelete() {
   const [status, setStatus] = useState(null)
@@ -13,26 +13,19 @@ export default function TodoDelete() {
     setStatus(null)
     setBodyText('')
 
-    // HTTP DELETE → REST API 창구 /todos/1 (삭제)
-    // 보통 body·Content-Type 없음 (보낼 수정 데이터가 없음)
-    fetch(`${API_BASE}/todos/1`, {
+    // HTTP DELETE → todos?id=eq.1 (실제 DB에서 삭제됨)
+    fetch(`${API_BASE}/todos?id=eq.1`, {
       method: 'DELETE',
+      headers: supabaseHeaders,
     })
-      // async/await는 DELETE와 무관함.
-      // await는 async 함수 안에서만 쓸 수 있는 키워드(내장 객체 아님).
-      // .then()은 fetch(네트워크) 완료만 기다리고,
-      // response.text() 본문 읽기는 또 다른 Promise라서
-      // 여기서는 await로 기다린다. (다른 페이지는 .then 체이닝으로 같은 일 처리)
       .then(async (response) => {
-        // 성공 여부는 주로 상태 코드로 판단
         setStatus(response.status)
 
         if (!response.ok) {
           throw new Error(`요청 실패: ${response.status}`)
         }
 
-        // 본문 유무·형태는 백엔드 설계에 따름 (비어 있는 경우 많음)
-        // JSONPlaceholder는 보통 빈 객체 {}
+        // Prefer: return=representation 이면 삭제된 row JSON이 올 수 있음
         const text = await response.text()
         setBodyText(text === '' ? '(본문 없음)' : text)
         setLoading(false)
@@ -46,7 +39,10 @@ export default function TodoDelete() {
   return (
     <div>
       <h1>JSON DELETE (삭제)</h1>
-      <p>/todos/1 삭제 요청 (JSONPlaceholder는 실제로 지우지 않음)</p>
+      <p>
+        id=1 삭제 요청 — <strong>실제로 DB에서 지워집니다.</strong>
+        Table Editor나 POST로 다시 추가할 수 있습니다.
+      </p>
 
       <button type="button" onClick={handleDelete} disabled={loading}>
         {loading ? '전송 중...' : 'DELETE로 삭제'}
