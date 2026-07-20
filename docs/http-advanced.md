@@ -281,4 +281,4 @@ console.log(response.status, data);
 `요청 = URL + method + headers + (body)` / `응답 = status + headers + (body)`  
 한 바퀴로 묶고, CRUD를 **자원의 생애주기**로 본다.
 
-관련: `docs/roadmap.md` §2 HTTP 심화 · §3 요청·응답·자원 모델
+관련: `docs/roadmap-frontend.md` §2 HTTP 심화 · §3 요청·응답·자원 모델

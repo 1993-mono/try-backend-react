@@ -256,4 +256,4 @@ Supabase에서는 POST/PATCH/DELETE가 **PostgreSQL에 실제 반영**된다. Ta
 endpoint · method · body · response · status가 **한 행(또는 Swagger 한 endpoint)** 에 들어가면,  
 프론트는 명세만 보고 `fetch`를 짤 수 있다.
 
-관련: `docs/roadmap.md` §3 요청·응답·자원 모델 · §4 API 명세서
+관련: `docs/roadmap-frontend.md` §3 요청·응답·자원 모델 · §4 API 명세서
