@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Todos API (학습용)
+  version: 1.0.0
+servers:
+  - url: https://qtrmcazlfswrrkusiewf.supabase.co/rest/v1
+paths:
+  /todos:
+    get:
+      summary: todo 단건 또는 목록 조회
+      parameters:
+        - name: id
+          in: query
+          description: "PostgREST 필터 예: eq.1"
+          schema:
+            type: string
+        - name: select
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    completed:
+                      type: boolean
+                    user_id:
+                      type: integer
