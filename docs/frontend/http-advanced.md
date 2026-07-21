@@ -1,11 +1,11 @@
 # HTTP 심화
 
-`docs/fundamentals.md`의 HTTP 기초(요청·응답·메서드)를 전제로,  
+`docs/frontend/fundamentals.md`의 HTTP 기초(요청·응답·메서드)를 전제로,  
 **상태 코드 · 헤더 · URL 구조**를 더 정확히 읽는 단계다.
 
 프론트·백엔드 공통으로 쓰인다.
 
-선행: `docs/fundamentals.md` §5 HTTP  
+선행: `docs/frontend/fundamentals.md` §5 HTTP  
 실습 API: [Supabase](https://supabase.com/) Data API — `.env`의 `VITE_SUPABASE_URL` · `src/config/api.js`
 
 ---
@@ -281,4 +281,4 @@ console.log(response.status, data);
 `요청 = URL + method + headers + (body)` / `응답 = status + headers + (body)`  
 한 바퀴로 묶고, CRUD를 **자원의 생애주기**로 본다.
 
-관련: `docs/roadmap-frontend.md` §2 HTTP 심화 · §3 요청·응답·자원 모델
+관련: `docs/frontend/roadmap.md` §2 HTTP 심화 · §3 요청·응답·자원 모델

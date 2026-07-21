@@ -3,7 +3,7 @@
 프론트·백엔드 공통으로 알아두면 좋은 기초 정리.  
 (JSON · API · REST · HTTP)
 
-다음 단계(상태 코드·헤더·URL 심화): `docs/http-advanced.md`
+다음 단계(상태 코드·헤더·URL 심화): `docs/frontend/http-advanced.md`
 
 ---
 
@@ -264,7 +264,7 @@ REST는 “URL + method로 자원을 다룬다”는 설계이므로,
 | 경로 | `/rest/v1/todos` | Data API · `todos` 테이블 |
 | 쿼리 | `?id=eq.1` | id가 1인 행 (PostgREST 필터) |
 
-Supabase는 **인증 헤더**(`apikey`, `Authorization`)가 필요하다. 자세한 예시는 `src/config/api.js` · `docs/http-advanced.md` 참고.
+Supabase는 **인증 헤더**(`apikey`, `Authorization`)가 필요하다. 자세한 예시는 `src/config/api.js` · `docs/frontend/http-advanced.md` 참고.
 
 **3. 헤더 (Header)** — 부가 정보  
 예: 본문 타입이 JSON이다, JSON으로 답해 달라는 식.
@@ -305,7 +305,7 @@ Supabase는 **인증 헤더**(`apikey`, `Authorization`)가 필요하다. 자세
 주소창에 URL을 입력하는 것도 사실상 **HTTP GET 요청**이다.  
 React의 `fetch`는 같은 HTTP 요청을 **코드로** 보내는 것이다.
 
-상태 코드·헤더·경로/쿼리를 더 깊게 보려면 → `docs/http-advanced.md`
+상태 코드·헤더·경로/쿼리를 더 깊게 보려면 → `docs/frontend/http-advanced.md`
 
 ---
 

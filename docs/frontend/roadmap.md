@@ -1,7 +1,7 @@
 # Roadmap — 프론트엔드
 
 전체 목록: `docs/roadmap.md`  
-다음 학습: `docs/roadmap-backend.md`
+다음 학습: `docs/backend/roadmap.md`
 
 ## 방향
 
@@ -18,13 +18,13 @@ HTTP·REST·JSON·method (0~1, 완료)
   → (이후) 백엔드 — roadmap-backend.md
 ```
 
-> **참고:** API / HTTP / REST / JSON은 `docs/fundamentals.md` 기준으로 **아직 이해도가 부족한 상태**에서 연동 단계를 진행했다. HTTP 심화·실습·실무에서 보완한다.
+> **참고:** API / HTTP / REST / JSON은 `docs/frontend/fundamentals.md` 기준으로 **아직 이해도가 부족한 상태**에서 연동 단계를 진행했다. HTTP 심화·실습·실무에서 보완한다.
 
 ---
 
 ## 0. 기초 개념
 
-자료: `docs/fundamentals.md`
+자료: `docs/frontend/fundamentals.md`
 
 - [x] JSON — 데이터 형식
 - [x] API — 창구·접점
@@ -83,7 +83,7 @@ HTTP·REST·JSON·method (0~1, 완료)
 
 ## 2. HTTP 심화
 
-자료: `docs/http-advanced.md`
+자료: `docs/frontend/http-advanced.md`
 
 메서드까지 익힌 뒤, 요청·응답을 더 정확히 읽는 단계.  
 프론트·백엔드 공통으로 쓰인다.
@@ -112,7 +112,7 @@ HTTP·REST·JSON·method (0~1, 완료)
 
 ## 3. HTTP 요청·응답·자원 모델
 
-자료: `docs/http-resource-model.md`  
+자료: `docs/frontend/http-resource-model.md`  
 실습: `src/pages/http-model/` (`RequestResponse`, `ResourceCrud`)
 
 HTTP 심화 다음. “한 번 보낸 fetch”를 그림으로 고정하고, CRUD를 자원의 생애주기로 본다.
@@ -133,8 +133,8 @@ HTTP 심화 다음. “한 번 보낸 fetch”를 그림으로 고정하고, CRU
 
 ## 4. API 명세서
 
-자료: `docs/api-spec.md`  
-실습 YAML: `docs/api-spec.yaml`
+자료: `docs/frontend/api-spec.md`  
+실습 YAML: `docs/frontend/api-spec.yaml`
 
 요청·응답·자원 모델을 **문서(계약)** 로 고정하는 단계.  
 **스프레드시트 → Swagger** 순으로. 형식만 다를 뿐 내용은 같다.
@@ -160,7 +160,7 @@ HTTP 심화 다음. “한 번 보낸 fetch”를 그림으로 고정하고, CRU
 
 ### 4) Swagger 쓰기
 
-- [x] 왼쪽 YAML로 todo API 한 개 명세 작성해 보기 (`docs/api-spec.yaml`)
+- [x] 왼쪽 YAML로 todo API 한 개 명세 작성해 보기 (`docs/frontend/api-spec.yaml`)
 - [ ] (선택) 백엔드 서버 만들 때 명세와 함께 정리 — `roadmap-backend.md` §9
 
 ---
@@ -168,4 +168,4 @@ HTTP 심화 다음. “한 번 보낸 fetch”를 그림으로 고정하고, CRU
 ## 다음
 
 프론트엔드 로드맵(0~4) 완료.  
-백엔드는 **`docs/roadmap-backend.md`** §1부터.
+백엔드는 **`docs/backend/roadmap.md`** §1부터.

@@ -1,7 +1,7 @@
 # Roadmap — 백엔드
 
 전체 목록: `docs/roadmap.md`  
-선행: `docs/roadmap-frontend.md` (0~4 완료 권장)
+선행: `docs/frontend/roadmap.md` (0~4 완료 권장)
 
 ## 방향
 
@@ -23,47 +23,50 @@ HTTP·자원 모델·명세를 **서버가 받아서 처리하는 쪽**으로 �
 > **스택:** 이 프로젝트 학습용은 **Node.js + Express** (React와 같은 JS, yarn).  
 > **실무:** 회사는 Spring 등이어도 HTTP·레이어·명세 개념은 같다. §10에서 대응한다.
 
-선행 자료: `docs/fundamentals.md` · `docs/http-advanced.md` · `docs/http-resource-model.md` · `docs/api-spec.md`
+선행 자료: `docs/frontend/fundamentals.md` · `docs/frontend/http-advanced.md` · `docs/frontend/http-resource-model.md` · `docs/frontend/api-spec.md`
 
 ---
 
-## 1. 관점 전환 — 서버의 역할 ← 다음
+## 1. 관점 전환 — 서버의 역할
 
-자료: (추후 작성) `docs/backend-basics.md`
+자료: `docs/backend/backend-basics.md`
 
 프론트에서 보던 HTTP 한 바퀴를 **서버 쪽**에서 본다.
 
-- [ ] 서버 = `listen` → 요청 **받기** → 처리 → `res.json()` **보내기**
-- [ ] Supabase Data API vs 자기 서버 — **역할 차이** (DB+API 합쳐짐 vs 로직을 내가 짬)
-- [ ] `req` / `res`가 3단계의 요청·응답과 **같은 규약**임을 이해
+- [x] 서버 = `listen` → 요청 **받기** → 처리 → `res.json()` **보내기**
+- [x] Supabase Data API vs 자기 서버 — **역할 차이** (DB+API 합쳐짐 vs 로직을 내가 씀)
+- [x] `req` / `res`가 3단계의 요청·응답과 **같은 규약**임을 이해
 
 ### 실습
 
-- [ ] `GET /health` → `{ "ok": true }` 서버 띄우기
-- [ ] 터미널·브라우저·curl로 응답 확인
+- [x] `GET /health` → `{ "ok": true }` 서버 띄우기 (`server/index.js`)
+- [x] 터미널·브라우저·curl로 응답 확인
 
 ---
 
 ## 2. Express 최소 API
 
-자료: (추후 작성) `docs/backend-basics.md`
+자료: `docs/backend/express-min-api.md`
 
-명세(`api-spec.yaml`)에 적었던 것을 **코드로 구현**한다.
+명세(`docs/frontend/api-spec.yaml`)에 적었던 것을 **코드로 구현**한다.  
+§1에서 `express` 설치 · `app.listen` · `/health`는 이미 했다.
 
-- [ ] `express` 설치 · `app.listen`
-- [ ] `app.get` / `app.post` / `app.patch` / `app.delete`
-- [ ] `req.query` · `req.params` · `req.body`
-- [ ] `express.json()` — POST body 파싱
-- [ ] `res.status(201).json(...)` — status + JSON 응답
+- [x] `express` 설치 · `app.listen` (§1에서 완료)
+- [x] `app.get` / `app.post` / `app.patch` / `app.delete`
+- [x] `req.query` · `req.params` · `req.body`
+- [x] `express.json()` — POST body 파싱
+- [x] `res.status(201).json(...)` — status + JSON 응답
 
 ### 실습
 
-- [ ] `todos` CRUD를 **메모리 배열**로 구현
-- [ ] React `fetch` URL을 `localhost` 서버로 바꿔 연동 (CORS 전에는 실패해도 OK — 다음 단계에서 해결)
+- [x] `todos` CRUD를 **메모리 배열**로 구현 (`server/index.js`)
+- [ ] React `fetch` URL을 `localhost` 서버로 바꿔 연동 (CORS 전에는 실패해도 OK — §3에서 해결)
 
 ---
 
-## 3. CORS
+## 3. CORS ← 다음
+
+자료: (추후 작성)
 
 프론트(Vite `5173`)와 서버(다른 포트)가 다를 때 브라우저가 막는 문제.
 
@@ -158,7 +161,7 @@ services/     → 비즈니스 로직
 
 - [ ] REST URL 설계 — `/todos/:id` vs `?id=eq.1` 정리
 - [ ] 에러 응답 형식 통일 — 예: `{ "error": "..." }`
-- [ ] `docs/api-spec.yaml`을 **자기 서버 기준**으로 수정
+- [ ] `docs/frontend/api-spec.yaml`을 **자기 서버 기준**으로 수정
 - [ ] (선택) Swagger UI 자동 생성 (`swagger-ui-express` 등)
 
 ---

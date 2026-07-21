@@ -1,13 +1,13 @@
 # API 명세서
 
-`docs/http-resource-model.md`의 요청·응답·자원 모델을 전제로,  
+`docs/frontend/http-resource-model.md`의 요청·응답·자원 모델을 전제로,  
 HTTP 통신 내용을 **문서(계약)** 로 고정하는 단계다.
 
 프론트·백엔드가 **같은 약속**을 보고 일한다. 형식은 스프레드시트든 Swagger든 **내용은 같다**.
 
-선행: `docs/fundamentals.md` · `docs/http-advanced.md` · `docs/http-resource-model.md`  
+선행: `docs/frontend/fundamentals.md` · `docs/frontend/http-advanced.md` · `docs/frontend/http-resource-model.md`  
 실습 API: [Supabase](https://supabase.com/) Data API — `.env` · `src/config/api.js`  
-실습: `docs/roadmap-frontend.md` §4 API 명세서 (표 읽기·쓰기 → Swagger)
+실습: `docs/frontend/roadmap.md` §4 API 명세서 (표 읽기·쓰기 → Swagger)
 
 ---
 
@@ -411,4 +411,4 @@ Network 탭·1단계 fetch 실습과 **같은 한 바퀴**다.
 다음 단계(`roadmap-backend.md` §1): 명세를 **서버가 받아 처리**하는 쪽(Express 등)으로 옮긴다.  
 그때 명세와 구현을 **맞춰 가는** 경험이 붙는다.
 
-관련: `docs/roadmap-frontend.md` §4 API 명세서 · `docs/http-resource-model.md`
+관련: `docs/frontend/roadmap.md` §4 API 명세서 · `docs/frontend/http-resource-model.md`

@@ -1,4 +1,4 @@
-import { Link, Routes, Route } from 'react-router-dom'
+import { Link, Routes, Route, useLocation } from 'react-router-dom'
 import { HiHome } from 'react-icons/hi2'
 
 import BeforeParse from '@/pages/rest-api/BeforeParse.jsx'
@@ -17,6 +17,10 @@ import RequestResponse from '@/pages/http-model/RequestResponse.jsx'
 import ResourceCrud from '@/pages/http-model/ResourceCrud.jsx'
 
 export default function App() {
+  const { pathname } = useLocation()
+  const isFrontend = pathname.startsWith('/frontend')
+  const isBackend = pathname.startsWith('/backend')
+
   return (
     <div>
       <nav>
@@ -24,67 +28,84 @@ export default function App() {
           <Link to="/" className="nav-home">
             <HiHome aria-hidden="true" />
           </Link>
+          {' | '}
+          <Link to="/backend">백엔드</Link>
+          {' | '}
+          <Link to="/frontend">프론트엔드</Link>
         </p>
 
-        {/* 로드맵 1단계 — 폴더: pages/rest-api */}
-        <p>
-          <strong>REST API 연동</strong>
-          <br />
-          <Link to="/rest-api/before-parse">파싱 전</Link>
-          {' | '}
-          <Link to="/rest-api/todo-get">JSON GET (단건)</Link>
-          {' | '}
-          <Link to="/rest-api/todo-list">JSON GET (목록)</Link>
-          {' | '}
-          <Link to="/rest-api/todo-post">JSON POST (생성)</Link>
-          {' | '}
-          <Link to="/rest-api/todo-patch">JSON PATCH (수정)</Link>
-          {' | '}
-          <Link to="/rest-api/todo-put">JSON PUT (교체)</Link>
-          {' | '}
-          <Link to="/rest-api/todo-delete">JSON DELETE (삭제)</Link>
-        </p>
+        {isBackend && (
+          <p>
+            {/* 백엔드 로드맵 메뉴 — 페이지 추가하면 Link 붙이기 */}
+            백엔드 실습 페이지는 아직 없습니다.
+          </p>
+        )}
 
-        {/* 로드맵 2단계 — 폴더: pages/http-advanced */}
-        <p>
-          <strong>HTTP 심화</strong>
-          <br />
-          <Link to="/http-advanced/status-code">상태 코드</Link>
-          {' | '}
-          <Link to="/http-advanced/header">헤더</Link>
-          {' | '}
-          <Link to="/http-advanced/url-query">URL 구조</Link>
-        </p>
+        {isFrontend && (
+          <>
+            {/* 로드맵 1단계 — 폴더: pages/rest-api */}
+            <p>
+              <strong>REST API 연동</strong>
+              <br />
+              <Link to="/frontend/rest-api/before-parse">파싱 전</Link>
+              {' | '}
+              <Link to="/frontend/rest-api/todo-get">JSON GET (단건)</Link>
+              {' | '}
+              <Link to="/frontend/rest-api/todo-list">JSON GET (목록)</Link>
+              {' | '}
+              <Link to="/frontend/rest-api/todo-post">JSON POST (생성)</Link>
+              {' | '}
+              <Link to="/frontend/rest-api/todo-patch">JSON PATCH (수정)</Link>
+              {' | '}
+              <Link to="/frontend/rest-api/todo-put">JSON PUT (교체)</Link>
+              {' | '}
+              <Link to="/frontend/rest-api/todo-delete">JSON DELETE (삭제)</Link>
+            </p>
 
-        {/* 로드맵 3단계 — 폴더: pages/http-model */}
-        <p>
-          <strong>HTTP 모델</strong>
-          <br />
-          <Link to="/http-model/request-response">요청-응답 한 바퀴</Link>
-          {' | '}
-          <Link to="/http-model/resource-crud">자원 CRUD</Link>
-        </p>
+            {/* 로드맵 2단계 — 폴더: pages/http-advanced */}
+            <p>
+              <strong>HTTP 심화</strong>
+              <br />
+              <Link to="/frontend/http-advanced/status-code">상태 코드</Link>
+              {' | '}
+              <Link to="/frontend/http-advanced/header">헤더</Link>
+              {' | '}
+              <Link to="/frontend/http-advanced/url-query">URL 구조</Link>
+            </p>
+
+            {/* 로드맵 3단계 — 폴더: pages/http-model */}
+            <p>
+              <strong>HTTP 모델</strong>
+              <br />
+              <Link to="/frontend/http-model/request-response">요청-응답 한 바퀴</Link>
+              {' | '}
+              <Link to="/frontend/http-model/resource-crud">자원 CRUD</Link>
+            </p>
+          </>
+        )}
       </nav>
 
       <hr />
 
       <Routes>
-        <Route path="/" element={<p>위에서 페이지를 선택하세요.</p>} />
+        <Route path="/" element={<p>위에서 프론트엔드 또는 백엔드를 선택하세요.</p>} />
+        <Route path="/frontend" element={<p>위에서 페이지를 선택하세요.</p>} />
+        <Route path="/backend" element={<p>백엔드 실습을 준비 중입니다.</p>} />
 
-        <Route path="/rest-api/before-parse" element={<BeforeParse />} />
-        <Route path="/rest-api/todo-get" element={<TodoGet />} />
-        <Route path="/rest-api/todo-list" element={<TodoList />} />
-        <Route path="/rest-api/todo-post" element={<TodoPost />} />
-        <Route path="/rest-api/todo-patch" element={<TodoPatch />} />
-        <Route path="/rest-api/todo-put" element={<TodoPut />} />
-        <Route path="/rest-api/todo-delete" element={<TodoDelete />} />
+        <Route path="/frontend/rest-api/before-parse" element={<BeforeParse />} />
+        <Route path="/frontend/rest-api/todo-get" element={<TodoGet />} />
+        <Route path="/frontend/rest-api/todo-list" element={<TodoList />} />
+        <Route path="/frontend/rest-api/todo-post" element={<TodoPost />} />
+        <Route path="/frontend/rest-api/todo-patch" element={<TodoPatch />} />
+        <Route path="/frontend/rest-api/todo-put" element={<TodoPut />} />
+        <Route path="/frontend/rest-api/todo-delete" element={<TodoDelete />} />
 
-        <Route path="/http-advanced/status-code" element={<StatusCode />} />
-        <Route path="/http-advanced/header" element={<Header />} />
-        <Route path="/http-advanced/url-query" element={<UrlQuery />} />
+        <Route path="/frontend/http-advanced/status-code" element={<StatusCode />} />
+        <Route path="/frontend/http-advanced/header" element={<Header />} />
+        <Route path="/frontend/http-advanced/url-query" element={<UrlQuery />} />
 
-        <Route path="/http-model/request-response" element={<RequestResponse />} />
-        <Route path="/http-model/resource-crud" element={<ResourceCrud />} />
+        <Route path="/frontend/http-model/request-response" element={<RequestResponse />} />
+        <Route path="/frontend/http-model/resource-crud" element={<ResourceCrud />} />
       </Routes>
     </div>
   )

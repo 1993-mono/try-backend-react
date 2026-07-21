@@ -1,11 +1,11 @@
 # HTTP 요청·응답·자원 모델
 
-`docs/http-advanced.md`의 상태 코드 · 헤더 · URL을 전제로,  
+`docs/frontend/http-advanced.md`의 상태 코드 · 헤더 · URL을 전제로,  
 **한 번의 fetch**를 요청·응답 **한 바퀴**로 묶고, CRUD를 **자원의 생애주기**로 본다.
 
 프론트·백엔드 공통으로 쓰인다.
 
-선행: `docs/fundamentals.md` · `docs/http-advanced.md`  
+선행: `docs/frontend/fundamentals.md` · `docs/frontend/http-advanced.md`  
 실습 API: [Supabase](https://supabase.com/) Data API — `.env` · `src/config/api.js`  
 실습 코드: `src/pages/http-model/` (또는 직접 추가하는 페이지)
 
@@ -256,4 +256,4 @@ Supabase에서는 POST/PATCH/DELETE가 **PostgreSQL에 실제 반영**된다. Ta
 endpoint · method · body · response · status가 **한 행(또는 Swagger 한 endpoint)** 에 들어가면,  
 프론트는 명세만 보고 `fetch`를 짤 수 있다.
 
-관련: `docs/roadmap-frontend.md` §3 요청·응답·자원 모델 · §4 API 명세서
+관련: `docs/frontend/roadmap.md` §3 요청·응답·자원 모델 · §4 API 명세서
