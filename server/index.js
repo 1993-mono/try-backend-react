@@ -70,6 +70,11 @@ app.get('/todos/:id', (req, res) => {
 
 // 생성 — POST /todos → req.body
 app.post('/todos', (req, res) => {
+  // title 업석나 빈 문자열이면 클라이언트 잘못 → 400
+  if (!req.body?.title) {
+    return res.status(400).json({ error: 'title is required' })
+  }
+
   const todo = {
     id: nextId++,
     title: req.body.title,

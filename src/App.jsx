@@ -17,6 +17,7 @@ import RequestResponse from '@/pages/frontend/http-model/RequestResponse.jsx'
 import ResourceCrud from '@/pages/frontend/http-model/ResourceCrud.jsx'
 
 import BackendTodoList from '@/pages/backend/cors/TodoList.jsx'
+import PostTodo from '@/pages/backend/status/PostTodo.jsx'
 
 export default function App() {
   const { pathname } = useLocation()
@@ -37,16 +38,23 @@ export default function App() {
         </p>
 
         {isBackend && (
-          <p>
-            <strong>CORS</strong>
-            <br />
-            <Link to="/backend/cors/todo-list">GET 목록 (Express 연동)</Link>
-          </p>
+          <>
+            <p>
+              <strong>CORS</strong>
+              <br />
+              <Link to="/backend/cors/todo-list">GET 목록 (Express 연동)</Link>
+            </p>
+
+            <p>
+              <strong>status</strong>
+              <br />
+              <Link to="/backend/status/post-todo">POST 생성 (201·400)</Link>
+            </p>
+          </>
         )}
 
         {isFrontend && (
           <>
-            {/* 로드맵 1단계 — 폴더: pages/frontend/rest-api */}
             <p>
               <strong>REST API 연동</strong>
               <br />
@@ -65,7 +73,6 @@ export default function App() {
               <Link to="/frontend/rest-api/todo-delete">JSON DELETE (삭제)</Link>
             </p>
 
-            {/* 로드맵 2단계 — 폴더: pages/frontend/http-advanced */}
             <p>
               <strong>HTTP 심화</strong>
               <br />
@@ -76,7 +83,6 @@ export default function App() {
               <Link to="/frontend/http-advanced/url-query">URL 구조</Link>
             </p>
 
-            {/* 로드맵 3단계 — 폴더: pages/frontend/http-model */}
             <p>
               <strong>HTTP 모델</strong>
               <br />
@@ -111,6 +117,7 @@ export default function App() {
         <Route path="/frontend/http-model/resource-crud" element={<ResourceCrud />} />
 
         <Route path="/backend/cors/todo-list" element={<BackendTodoList />} />
+        <Route path="/backend/status/post-todo" element={<PostTodo />} />
       </Routes>
     </div>
   )

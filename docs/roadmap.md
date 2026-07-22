@@ -7,7 +7,7 @@
 | 문서 | 내용 | 상태 |
 | ---- | ---- | ---- |
 | **[frontend/roadmap.md](frontend/roadmap.md)** | 기초 개념 · REST 연동 · HTTP 심화 · 자원 모델 · API 명세서 (0~4) | 0~4 완료 |
-| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 배포 · Spring 연결 (1~10) | §3 완료 · §4 ← 다음 |
+| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 배포 · Spring 연결 (1~10) | §4 완료 · §5 ← 다음 |
 
 ## 흐름 (한눈에)
 
@@ -37,7 +37,8 @@ docs/
     ├── roadmap.md
     ├── backend-basics.md      ← §1 서버 역할
     ├── express-min-api.md     ← §2 Express 최소 API
-    └── cors.md                ← §3 CORS
+    ├── cors.md                ← §3 CORS
+    └── status-error.md        ← §4 status · 에러 응답
 ```
 
 ### 프론트엔드 자료
@@ -52,3 +53,4 @@ docs/
 - `docs/backend/backend-basics.md` — 서버 역할 · curl (§1)
 - `docs/backend/express-min-api.md` — Express · 미들웨어 · 라우트 · res · CRUD (§2)
 - `docs/backend/cors.md` — CORS · origin · cors 미들웨어 · React 연동 (§3)
+- `docs/backend/status-error.md` — status · 에러 응답 · 프론트 분기 (§4)

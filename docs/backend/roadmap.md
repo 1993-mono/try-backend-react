@@ -80,23 +80,25 @@ HTTP·자원 모델·명세를 **서버가 받아서 처리하는 쪽**으로 �
 
 ---
 
-## 4. status · 에러 응답 ← 다음
+## 4. status · 에러 응답
+
+자료: `docs/backend/status-error.md`
 
 2단계에서 **받던** status를 이번엔 **보내는** 쪽에서 직접 다룬다.
 
-- [ ] 성공: `200`, `201`
-- [ ] 클라이언트 오류: `400`, `404`
-- [ ] 서버 오류: `500`
-- [ ] id 없음 · body 누락 등 **케이스별** 응답
+- [x] 성공: `200`, `201`
+- [x] 클라이언트 오류: `400`, `404`
+- [x] 서버 오류: `500` (개념 — 실습은 선택)
+- [x] id 없음 · body 누락 등 **케이스별** 응답
 
 ### 실습
 
-- [ ] todos API에서 위 status를 상황에 맞게 반환
-- [ ] 프론트에서 `response.ok` / `response.status`로 분기
+- [x] todos API에서 위 status를 상황에 맞게 반환 (`400` 추가, `404`/`201` 등 기존)
+- [x] 프론트에서 `response.ok` / `response.status`로 분기 (`src/pages/backend/status/PostTodo.jsx`)
 
 ---
 
-## 5. DB 연결
+## 5. DB 연결 ← 다음
 
 메모리 다음. Supabase(PostgreSQL)를 이미 쓰고 있으므로 둘 중 하나로 진행.
 
