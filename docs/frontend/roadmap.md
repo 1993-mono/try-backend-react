@@ -113,7 +113,7 @@ HTTP·REST·JSON·method (0~1, 완료)
 ## 3. HTTP 요청·응답·자원 모델
 
 자료: `docs/frontend/http-resource-model.md`  
-실습: `src/pages/http-model/` (`RequestResponse`, `ResourceCrud`)
+실습: `src/pages/frontend/http-model/` (`RequestResponse`, `ResourceCrud`)
 
 HTTP 심화 다음. “한 번 보낸 fetch”를 그림으로 고정하고, CRUD를 자원의 생애주기로 본다.
 

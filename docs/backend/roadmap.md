@@ -60,27 +60,27 @@ HTTP·자원 모델·명세를 **서버가 받아서 처리하는 쪽**으로 �
 ### 실습
 
 - [x] `todos` CRUD를 **메모리 배열**로 구현 (`server/index.js`)
-- [ ] React `fetch` URL을 `localhost` 서버로 바꿔 연동 (CORS 전에는 실패해도 OK — §3에서 해결)
+- [x] React `fetch` URL을 `localhost` 서버로 바꿔 연동 (`src/pages/backend/cors/` — §3)
 
 ---
 
-## 3. CORS ← 다음
+## 3. CORS
 
-자료: (추후 작성)
+자료: `docs/backend/cors.md`
 
 프론트(Vite `5173`)와 서버(다른 포트)가 다를 때 브라우저가 막는 문제.
 
-- [ ] CORS가 **브라우저 규칙**임을 이해 (서버끼리 통신과 다름)
-- [ ] `cors` 미들웨어로 개발 환경 연동
+- [x] CORS가 **브라우저 규칙**임을 이해 (서버끼리 통신과 다름)
+- [x] `cors` 미들웨어로 개발 환경 연동
 
 ### 실습
 
-- [ ] React에서 자기 Express 서버 `todos` 호출 성공
-- [ ] Network 탭에서 요청·응답이 Supabase 때와 **같은 구조**인지 확인
+- [x] React에서 자기 Express 서버 `todos` 호출 성공 (`src/pages/backend/cors/TodoList.jsx`)
+- [x] Network 탭에서 요청·응답이 Supabase 때와 **같은 구조**인지 확인
 
 ---
 
-## 4. status · 에러 응답
+## 4. status · 에러 응답 ← 다음
 
 2단계에서 **받던** status를 이번엔 **보내는** 쪽에서 직접 다룬다.
 

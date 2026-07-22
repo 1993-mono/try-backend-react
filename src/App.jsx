@@ -1,20 +1,22 @@
 import { Link, Routes, Route, useLocation } from 'react-router-dom'
 import { HiHome } from 'react-icons/hi2'
 
-import BeforeParse from '@/pages/rest-api/BeforeParse.jsx'
-import TodoGet from '@/pages/rest-api/TodoGet.jsx'
-import TodoList from '@/pages/rest-api/TodoList.jsx'
-import TodoPost from '@/pages/rest-api/TodoPost.jsx'
-import TodoPatch from '@/pages/rest-api/TodoPatch.jsx'
-import TodoPut from '@/pages/rest-api/TodoPut.jsx'
-import TodoDelete from '@/pages/rest-api/TodoDelete.jsx'
+import BeforeParse from '@/pages/frontend/rest-api/BeforeParse.jsx'
+import TodoGet from '@/pages/frontend/rest-api/TodoGet.jsx'
+import TodoList from '@/pages/frontend/rest-api/TodoList.jsx'
+import TodoPost from '@/pages/frontend/rest-api/TodoPost.jsx'
+import TodoPatch from '@/pages/frontend/rest-api/TodoPatch.jsx'
+import TodoPut from '@/pages/frontend/rest-api/TodoPut.jsx'
+import TodoDelete from '@/pages/frontend/rest-api/TodoDelete.jsx'
 
-import StatusCode from '@/pages/http-advanced/StatusCode.jsx'
-import Header from '@/pages/http-advanced/Header.jsx'
-import UrlQuery from '@/pages/http-advanced/UrlQuery.jsx'
+import StatusCode from '@/pages/frontend/http-advanced/StatusCode.jsx'
+import Header from '@/pages/frontend/http-advanced/Header.jsx'
+import UrlQuery from '@/pages/frontend/http-advanced/UrlQuery.jsx'
 
-import RequestResponse from '@/pages/http-model/RequestResponse.jsx'
-import ResourceCrud from '@/pages/http-model/ResourceCrud.jsx'
+import RequestResponse from '@/pages/frontend/http-model/RequestResponse.jsx'
+import ResourceCrud from '@/pages/frontend/http-model/ResourceCrud.jsx'
+
+import BackendTodoList from '@/pages/backend/cors/TodoList.jsx'
 
 export default function App() {
   const { pathname } = useLocation()
@@ -36,14 +38,15 @@ export default function App() {
 
         {isBackend && (
           <p>
-            {/* 백엔드 로드맵 메뉴 — 페이지 추가하면 Link 붙이기 */}
-            백엔드 실습 페이지는 아직 없습니다.
+            <strong>CORS</strong>
+            <br />
+            <Link to="/backend/cors/todo-list">GET 목록 (Express 연동)</Link>
           </p>
         )}
 
         {isFrontend && (
           <>
-            {/* 로드맵 1단계 — 폴더: pages/rest-api */}
+            {/* 로드맵 1단계 — 폴더: pages/frontend/rest-api */}
             <p>
               <strong>REST API 연동</strong>
               <br />
@@ -62,7 +65,7 @@ export default function App() {
               <Link to="/frontend/rest-api/todo-delete">JSON DELETE (삭제)</Link>
             </p>
 
-            {/* 로드맵 2단계 — 폴더: pages/http-advanced */}
+            {/* 로드맵 2단계 — 폴더: pages/frontend/http-advanced */}
             <p>
               <strong>HTTP 심화</strong>
               <br />
@@ -73,7 +76,7 @@ export default function App() {
               <Link to="/frontend/http-advanced/url-query">URL 구조</Link>
             </p>
 
-            {/* 로드맵 3단계 — 폴더: pages/http-model */}
+            {/* 로드맵 3단계 — 폴더: pages/frontend/http-model */}
             <p>
               <strong>HTTP 모델</strong>
               <br />
@@ -90,7 +93,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<p>위에서 프론트엔드 또는 백엔드를 선택하세요.</p>} />
         <Route path="/frontend" element={<p>위에서 페이지를 선택하세요.</p>} />
-        <Route path="/backend" element={<p>백엔드 실습을 준비 중입니다.</p>} />
+        <Route path="/backend" element={<p>위에서 페이지를 선택하세요.</p>} />
 
         <Route path="/frontend/rest-api/before-parse" element={<BeforeParse />} />
         <Route path="/frontend/rest-api/todo-get" element={<TodoGet />} />
@@ -106,6 +109,8 @@ export default function App() {
 
         <Route path="/frontend/http-model/request-response" element={<RequestResponse />} />
         <Route path="/frontend/http-model/resource-crud" element={<ResourceCrud />} />
+
+        <Route path="/backend/cors/todo-list" element={<BackendTodoList />} />
       </Routes>
     </div>
   )

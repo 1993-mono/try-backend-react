@@ -7,7 +7,7 @@
 
 선행: `docs/frontend/fundamentals.md` · `docs/frontend/http-advanced.md`  
 실습 API: [Supabase](https://supabase.com/) Data API — `.env` · `src/config/api.js`  
-실습 코드: `src/pages/http-model/` (또는 직접 추가하는 페이지)
+실습 코드: `src/pages/frontend/http-model/` (또는 직접 추가하는 페이지)
 
 ---
 

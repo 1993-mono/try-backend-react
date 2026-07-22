@@ -1,9 +1,11 @@
+import cors from 'cors'
 import express from 'express'
 
 const app = express()
 const PORT = 3000
 
 // app.use = 들어오는 요청마다 거쳐 갈 미들웨어 등록
+app.use(cors())
 // express.json() = 요청 body(JSON 문자열) → req.body(객체)로 파싱해 줌
 // res.json()과는 다른 함수. JSON 변환이 필요한 구간은 사실상:
 //   - 요청 body → req.body (express.json)
@@ -102,22 +104,6 @@ app.delete('/todos/:id', (req, res) => {
   // 204 No Content — 삭제 성공, 응답 body 없음 (res.json 대신 status + send)
   res.status(204).send()
 })
-
-// === curl 테스트 (다른 터미널에서, 서버는 yarn server로 켜 둔 상태) ===
-//
-// 공통 옵션
-// - (없음)     GET 기본. URL만 치면 됨
-// - -i         응답 헤더까지 출력 (status 확인 — DELETE 204, 404 등)
-// - -X METHOD  HTTP method 지정 (POST, PATCH, DELETE)
-// - -H "..."   요청 헤더 (JSON body 보낼 때 Content-Type: application/json)
-// - -d '...'   요청 body (JSON 문자열)
-//
-// curl http://localhost:3000/todos
-// curl http://localhost:3000/todos/1
-// curl -i http://localhost:3000/todos/999
-// curl -X POST http://localhost:3000/todos -H "Content-Type: application/json" -d '{"title":"새 할 일","completed":false}'
-// curl -X PATCH http://localhost:3000/todos/1 -H "Content-Type: application/json" -d '{"completed":true}'
-// curl -i -X DELETE http://localhost:3000/todos/2
 
 // PORT에서 요청 대기 시작 ("가게 문 열기")
 // - 위쪽 get/post 등 = 진열·메뉴 준비(등록)

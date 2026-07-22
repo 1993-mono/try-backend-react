@@ -224,4 +224,4 @@ curl -i -X DELETE http://localhost:3000/todos/2
 ## 다음
 
 - 로드맵 §2 이론: `docs/backend/express-min-api.md`
-- 다음 단계: 로드맵 §3 CORS
+- 다음 단계: `docs/backend/cors.md` (로드맵 §3)
