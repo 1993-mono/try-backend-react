@@ -7,7 +7,7 @@
 | 문서 | 내용 | 상태 |
 | ---- | ---- | ---- |
 | **[frontend/roadmap.md](frontend/roadmap.md)** | 기초 개념 · REST 연동 · HTTP 심화 · 자원 모델 · API 명세서 (0~4) | 0~4 완료 |
-| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 배포 · Spring 연결 (1~10) | §5 완료 · §6 ← 다음 |
+| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 배포 · Spring 연결 (1~10) | §6 완료 · §7 ← 다음 |
 
 ## 흐름 (한눈에)
 

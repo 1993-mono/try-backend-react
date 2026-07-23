@@ -40,11 +40,12 @@
 7. CORS 설정 및 React-Express 연동
 8. 서버 status 코드·에러 응답 검토
 9. Express-DB 연동 및 todos CRUD 검토
+10. 서버 레이어 구조 검토: routes · controller · service 분리
 
 ---
 
 ## 다음 제안 시 참고
 
-- 현재 로드맵 다음: `docs/backend/roadmap.md` §6 폴더 구조
-- 직전 채택: Express-DB 연동 및 todos CRUD 검토
-- §5 자료: `docs/backend/db-connect.md`
+- 현재 로드맵 다음: `docs/backend/roadmap.md` §7 인증
+- 직전 채택: 서버 레이어 구조 검토: routes · controller · service 분리
+- §6 자료: `docs/backend/folder-structure.md` (db · controllers · routes 완료, services 보류)

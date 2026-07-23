@@ -20,8 +20,7 @@ export default function TodoList() {
         return response.json()
       })
       .then((data) => {
-        // 목록이 너무 길면 앞부분만
-        setTodos(data.slice(0, 10))
+        setTodos(data)
         setLoading(false)
       })
       .catch((err) => {

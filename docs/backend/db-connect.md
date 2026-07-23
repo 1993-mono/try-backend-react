@@ -722,6 +722,6 @@ DB 응답은 시간이 걸린다.
 
 ## 다음에 연결
 
-- §6 폴더 구조 — `index.js` 한 파일을 routes / controllers / services / db 로 나누기
+- §6 폴더 구조 — `docs/backend/folder-structure.md` (`index.js` → routes / controllers / services / db)
 - §8 `.env` · 검증 — 비밀키·입력 검사를 더 체계적으로
 - §10 Spring — Repository가 SQL(또는 ORM)을 담당하는 자리에 `pool.query`가 대응
