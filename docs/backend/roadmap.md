@@ -98,26 +98,29 @@ HTTP·자원 모델·명세를 **서버가 받아서 처리하는 쪽**으로 �
 
 ---
 
-## 5. DB 연결 ← 다음
+## 5. DB 연결
+
+자료: `docs/backend/db-connect.md`
 
 메모리 다음. Supabase(PostgreSQL)를 이미 쓰고 있으므로 둘 중 하나로 진행.
 
 | 방식 | 설명 |
 | ---- | ---- |
-| **A. `pg` + Supabase PostgreSQL** | DB는 하나, “클라이언트 직접” vs “서버 경유” 비교에 좋음 |
+| **A. `pg` + Supabase PostgreSQL** | DB는 하나, “클라이언트 직접” vs “서버 경유” 비교에 좋음 ✅ 선택 |
 | **B. SQLite (로컬)** | 설정 단순, SQL 연습용 |
 
-- [ ] SQL 기초 — SELECT / INSERT / UPDATE / DELETE
-- [ ] Express에서 DB 쿼리 후 JSON 응답
-- [ ] Supabase 직연동 vs 자기 서버 경유 — **역할 차이** 한 줄로 설명
+- [x] SQL 기초 — SELECT / INSERT / UPDATE / DELETE
+- [x] Express에서 DB 쿼리 후 JSON 응답
+- [x] Supabase 직연동 vs 자기 서버 경유 — **역할 차이** 한 줄로 설명
 
 ### 실습
 
-- [ ] todos CRUD가 **DB에 반영**되게 (1단계 Supabase 실습과 같은 결과, 경로만 다름)
+- [x] todos CRUD가 **DB에 반영**되게 (`server/index.js`, 참고: `server/examples/02-memory-todos.js`)
+- [x] 프론트 Express 연동 페이지로 목록·POST 확인
 
 ---
 
-## 6. 폴더 구조 (레이어)
+## 6. 폴더 구조 (레이어) ← 다음
 
 한 파일에 몰아넣지 않고 나눈다. 실무 Spring과 같은 **층** 개념.
 
