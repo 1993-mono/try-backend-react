@@ -7,7 +7,7 @@
 | 문서 | 내용 | 상태 |
 | ---- | ---- | ---- |
 | **[frontend/roadmap.md](frontend/roadmap.md)** | 기초 개념 · REST 연동 · HTTP 심화 · 자원 모델 · API 명세서 (0~4) | 0~4 완료 |
-| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 배포 · Spring 연결 (1~10) | §7 완료 · §8 ← 다음 |
+| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 검증·환경 · 배포 · Spring 연결 (1~10) | §8 완료 · §9 ← 다음 |
 
 ## 흐름 (한눈에)
 
@@ -41,7 +41,8 @@ docs/
     ├── status-error.md        ← §4 status · 에러 응답
     ├── db-connect.md          ← §5 DB 연결
     ├── folder-structure.md    ← §6 폴더 구조 (레이어)
-    └── auth.md                ← §7 인증
+    ├── auth.md                ← §7 인증
+    └── validation-env.md      ← §8 입력 검증 · 환경 설정
 ```
 
 ### 프론트엔드 자료
@@ -60,3 +61,4 @@ docs/
 - `docs/backend/db-connect.md` — pg · SQL · Express→PostgreSQL (§5)
 - `docs/backend/folder-structure.md` — routes · controllers · db (§6, services 보류)
 - `docs/backend/auth.md` — JWT · Bearer · 인증 미들웨어 (§7)
+- `docs/backend/validation-env.md` — 입력 검증 · `.env` · `VITE_*` 분리 (§8)

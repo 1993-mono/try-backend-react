@@ -42,12 +42,14 @@
 9. Express-DB 연동 및 todos CRUD 검토
 10. 서버 레이어 구조 검토: routes · controller · service 분리
 11. API 인증 방식 검토: JWT · Bearer
+12. 입력 검증 및 서버 환경 변수 분리 검토
 
 ---
 
 ## 다음 제안 시 참고
 
-- 현재 로드맵 다음: `docs/backend/roadmap.md` §8 입력 검증 · 환경 설정
-- 직전 채택: API 인증 방식 검토: JWT · Bearer
-- §7 자료: `docs/backend/auth.md` (완료)
+- 현재 로드맵 다음: `docs/backend/roadmap.md` §9 API 설계 · 문서
+- 다음 업무일지(채택): API 설계 및 명세 검토
+- 직전 채택(§8): 입력 검증 및 서버 환경 변수 분리 검토
+- §8 자료: `docs/backend/validation-env.md`
 - §6 보류: services 실습 미완료 (`controller` → `db` 직연결)

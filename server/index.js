@@ -5,7 +5,7 @@ import todosRouter from './routes/todos.js' // export default router → 이름�
 import authRouter from './routes/auth.js' // export default router → 이름만 authRouter
 
 const app = express()
-const PORT = 3000
+const PORT = Number(process.env.PORT) || 3000
 
 app.use(cors())
 app.use(express.json()) // 요청 JSON body → req.body (로그인 body 포함)

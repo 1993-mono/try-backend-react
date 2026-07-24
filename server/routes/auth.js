@@ -14,7 +14,17 @@ router.post('/login', (req, res) => {
   // body 없으면 빈 객체로 (undefined 방지)
   const { username, password } = req.body ?? {}
 
-  // 틀리면 토큰 안 줌
+  // 1) 형식 검사 — 문자열인지 (없으면/타입 틀리면 400)
+  if (
+    typeof username !== 'string' ||
+    typeof password !== 'string' ||
+    username.trim() === '' ||
+    password.trim() === ''
+  ) {
+    return res.status(400).json({ error: 'username and password required' })
+  }
+
+  // 2) 인증 — 형식은 OK, 값만 틀린 경우 401
   if (username !== DEMO_USER.username || password !== DEMO_USER.password) {
     return res.status(401).json({ error: 'invalid credentials' })
   }
