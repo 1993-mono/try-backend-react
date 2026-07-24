@@ -41,11 +41,13 @@
 8. 서버 status 코드·에러 응답 검토
 9. Express-DB 연동 및 todos CRUD 검토
 10. 서버 레이어 구조 검토: routes · controller · service 분리
+11. API 인증 방식 검토: JWT · Bearer
 
 ---
 
 ## 다음 제안 시 참고
 
-- 현재 로드맵 다음: `docs/backend/roadmap.md` §7 인증
-- 직전 채택: 서버 레이어 구조 검토: routes · controller · service 분리
-- §6 자료: `docs/backend/folder-structure.md` (db · controllers · routes 완료, services 보류)
+- 현재 로드맵 다음: `docs/backend/roadmap.md` §8 입력 검증 · 환경 설정
+- 직전 채택: API 인증 방식 검토: JWT · Bearer
+- §7 자료: `docs/backend/auth.md` (완료)
+- §6 보류: services 실습 미완료 (`controller` → `db` 직연결)

@@ -129,6 +129,20 @@ PostgreSQL `todos` 테이블에 **실제로** 읽기·쓰기가 일어난다.
 | Response Headers            | headers (응답) |
 | Response (Preview)          | body (응답)    |
 
+#### 용어: payload
+
+**payload** (영) ≈ *적재물 · 운반하는 내용물*.  
+통신·보안 맥락에서는 “껍데기가 아니라 **실제로 실어 나르는 데이터**”를 가리킬 때 자주 쓴다.
+
+이 문서(HTTP)에서:
+
+| 말 | 뜻 |
+| ---- | ---- |
+| **Request Payload** | 요청에 실은 **본문 데이터** — 보통 JSON body |
+| Network 탭 이름 | Chrome 등이 body를 “Payload”라고 보여 주기도 함 |
+
+같은 단어가 JWT에서는 토큰 **가운데 칸(내용)** 을 뜻한다. → `docs/backend/auth.md` §5
+
 화면에 띄운 “요청 스냅샷 / 응답 스냅샷”과 Network 탭이 **같은 그림**이면 이해가 고정된다.
 
 ---

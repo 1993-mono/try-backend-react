@@ -133,26 +133,36 @@ services/     → 비즈니스 로직
 (db/)         → 쿼리
 ```
 
-- [x] 라우트 · 컨트롤러 · 서비스 역할 구분
-- [x] todos 코드를 위 구조로 리팩터
-  - db · controllers · routes 분리 완료
-  - services는 개념만 두고, controller → db 직연결 (나중에 끼워도 됨)
+- [x] 라우트 · 컨트롤러 역할 구분 · 분리
+- [x] db 분리 (`pool` · SQL)
+- [ ] **services 분리** — 이론만 봄. 실습에서 파일로 안 나눔  
+  (지금: `controller` → `db` 직호출. 나중에 끼우기)
+
+### 실습 결과
+
+- [x] `server/db/` · `server/controllers/` · `server/routes/` · 얇은 `index.js`
+- [ ] `server/services/` — **미완료** (보류)
 
 ---
 
-## 7. 인증 (고급) ← 다음
+## 7. 인증 (고급)
 
-- [ ] 왜 필요한가 — “누가” 요청했는지
-- [ ] JWT · Bearer 헤더 (`Authorization`)
-- [ ] 쿠키 · 세션 — 개념만 (회사 방식에 따라 다름)
+자료: `docs/backend/auth.md`
+
+- [x] 왜 필요한가 — “누가” 요청했는지
+- [x] JWT · Bearer 헤더 (`Authorization`)
+- [x] 쿠키 · 세션 — 개념만 (회사 방식에 따라 다름)
 
 ### 실습
 
-- [ ] (선택) 로그인 API → 토큰 발급 → todos는 토큰 있을 때만
+- [x] 로그인 API → 토큰 발급 → todos는 토큰 있을 때만
+  - `middleware/auth.js` · `routes/auth.js` · todos에 `requireAuth`
+  - 프론트: `src/pages/backend/auth/TodoList.jsx` (Bearer)
+  - cors TodoList는 헤더 없음 버전으로 보존
 
 ---
 
-## 8. 입력 검증 · 환경 설정
+## 8. 입력 검증 · 환경 설정 ← 다음
 
 ### 검증
 

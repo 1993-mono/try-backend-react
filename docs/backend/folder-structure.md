@@ -214,40 +214,44 @@ dotenv · cors · express.json
 
 ---
 
-## 7. 실습에서 만들 목표 구조
+## 7. 실습에서 만든 구조 · 남은 것
 
-이론은 여기까지. 실습에서는 대략 이런 모양을 만든다.
+### 한 것
 
 ```
 server/
   index.js                 ← 조립 · listen
   db/
-    pool.js                ← Pool 한 곳
-    todos.js               ← SQL 함수들
-  services/
-    todosService.js
+    pool.js
+    todos.js               ← SQL만
   controllers/
-    todosController.js
+    todosController.js     ← req/res · status (db 직호출)
   routes/
     todos.js
-    health.js              ← (선택) /health
   examples/
-    02-memory-todos.js     ← 예전 참고 (그대로)
+    02-memory-todos.js
+    03-db-todos.js         ← 한 파일 DB 버전 보관
 ```
 
-실습 순서 (예정):
+실습 순서 (실제):
 
-1. `db/pool.js` · `db/todos.js` 분리
-2. `services/todosService.js`
-3. `controllers/todosController.js`
-4. `routes/todos.js` 연결
-5. `index.js`는 조립만
-6. 프론트·curl로 CRUD 동일 확인
+1. [x] `db/pool.js` · `db/todos.js`
+2. [x] `controllers/todosController.js`
+3. [x] `routes/todos.js` · `index.js` 조립
+4. [x] 프론트·curl로 CRUD 확인
+
+### 안 한 것 — services
+
+- [ ] `services/todosService.js` — **실습에서 다루지 않음**
+- 이론상 위치: controller와 db **사이** (업무 규칙)
+- 현재: controller가 `todosDb`를 **직접** 호출
+- 나중에 규칙이 커지면 그때 끼워도 됨
 
 ---
 
 ## 다음에 연결
 
-- §7 인증 — “누가” 요청했는지 (레이어 위에 미들웨어가 붙는 그림)
+- §7 인증 — `docs/backend/auth.md` (“누가” · JWT · Bearer, 미들웨어 문지기)
 - §8 검증 · `.env` — controller/service 경계에서 입력 검사 강화
 - §10 Spring — 이 문서 §5 표를 회사 코드에 대조
+- (보류) §6 services — controller → service → db 로 한 겹 더 나누기
