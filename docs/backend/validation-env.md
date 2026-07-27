@@ -275,4 +275,5 @@ curl -s -X POST http://localhost:3000/todos \
 
 ## 다음에
 
-검증·환경이 갖춰지면 §9 — API 설계 · 명세를 **자기 서버 기준**으로 맞춘다.
+검증·환경이 갖춰지면 §9 — API 설계 · 명세를 **자기 서버 기준**으로 맞춘다.  
+자료: `docs/backend/api-design.md`

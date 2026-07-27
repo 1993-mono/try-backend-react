@@ -43,13 +43,14 @@
 10. 서버 레이어 구조 검토: routes · controller · service 분리
 11. API 인증 방식 검토: JWT · Bearer
 12. 입력 검증 및 서버 환경 변수 분리 검토
+13. API 설계 및 명세 검토
 
 ---
 
 ## 다음 제안 시 참고
 
-- 현재 로드맵 다음: `docs/backend/roadmap.md` §9 API 설계 · 문서
-- 다음 업무일지(채택): API 설계 및 명세 검토
-- 직전 채택(§8): 입력 검증 및 서버 환경 변수 분리 검토
-- §8 자료: `docs/backend/validation-env.md`
+- 현재 로드맵 다음: `docs/backend/roadmap.md` §10 배포 · Spring 연결
+- 직전 채택(§9): API 설계 및 명세 검토
+- §9 결과: `docs/backend/api-design.yaml` (Express) · 프론트 YAML은 Supabase용 유지 · Swagger UI 생략
+- §10 체크: 배포 맛보기(`node`/PM2) · `/health` · Express↔Spring 대응 · (선택) 회사 명세 한 줄 대응
 - §6 보류: services 실습 미완료 (`controller` → `db` 직연결)

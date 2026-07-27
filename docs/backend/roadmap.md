@@ -178,16 +178,19 @@ services/     → 비즈니스 로직
 
 ---
 
-## 9. API 설계 · 문서 ← 다음
+## 9. API 설계 · 문서
 
-- [ ] REST URL 설계 — `/todos/:id` vs `?id=eq.1` 정리
-- [ ] 에러 응답 형식 통일 — 예: `{ "error": "..." }`
-- [ ] `docs/frontend/api-spec.yaml`을 **자기 서버 기준**으로 수정
-- [ ] (선택) Swagger UI 자동 생성 (`swagger-ui-express` 등)
+자료: `docs/backend/api-design.md` · `docs/backend/api-design.yaml`
+
+- [x] REST URL 설계 — `/todos/:id` vs `?id=eq.1` 정리
+- [x] 에러 응답 형식 통일 — 예: `{ "error": "..." }`
+- [x] Express 기준 명세 작성 — `docs/backend/api-design.yaml`  
+  (프론트 `api-spec.yaml`은 Supabase 학습용으로 유지)
+- [ ] (선택) Swagger UI — 생략
 
 ---
 
-## 10. 배포 · Spring 연결
+## 10. 배포 · Spring 연결 ← 다음
 
 ### 배포 (선택)
 
