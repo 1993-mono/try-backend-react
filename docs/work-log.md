@@ -44,13 +44,16 @@
 11. API 인증 방식 검토: JWT · Bearer
 12. 입력 검증 및 서버 환경 변수 분리 검토
 13. API 설계 및 명세 검토
+14. 배포 및 Express-Spring 대응 검토
+15. 배포 확인 및 인증 기반 todos CRUD 연동 검토
+16. Supabase 직연동 vs Express 서버 역할 검토
 
 ---
 
 ## 다음 제안 시 참고
 
-- 현재 로드맵 다음: `docs/backend/roadmap.md` §10 배포 · Spring 연결
-- 직전 채택(§9): API 설계 및 명세 검토
-- §9 결과: `docs/backend/api-design.yaml` (Express) · 프론트 YAML은 Supabase용 유지 · Swagger UI 생략
-- §10 체크: 배포 맛보기(`node`/PM2) · `/health` · Express↔Spring 대응 · (선택) 회사 명세 한 줄 대응
+- 다음 진행(예정): `Supabase 직연동 vs Express 서버 역할 검토` — 말로 차이 정리 · 로드맵 마무리 체크
+- 직전 채택: Supabase 직연동 vs Express 서버 역할 검토
+- 직전 완료 흐름: 인증 기반 todos CRUD (`src/pages/backend/crud/TodoList.jsx`) · §9 명세 · Spring/Swagger 생략
+- 마무리 목표 남은 것: Supabase 직연동 vs 자기 서버 차이 설명 · 로드맵 체크 갱신
 - §6 보류: services 실습 미완료 (`controller` → `db` 직연결)

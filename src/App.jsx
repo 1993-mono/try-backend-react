@@ -19,6 +19,7 @@ import ResourceCrud from '@/pages/frontend/http-model/ResourceCrud.jsx'
 import BackendTodoList from '@/pages/backend/cors/TodoList.jsx'
 import PostTodo from '@/pages/backend/status/PostTodo.jsx'
 import AuthTodoList from '@/pages/backend/auth/TodoList.jsx'
+import CrudTodoList from '@/pages/backend/crud/TodoList.jsx'
 
 export default function App() {
   const { pathname } = useLocation()
@@ -56,6 +57,12 @@ export default function App() {
               <strong>인증</strong>
               <br />
               <Link to="/backend/auth/todo-list">GET 목록 (Bearer)</Link>
+            </p>
+
+            <p>
+              <strong>CRUD</strong>
+              <br />
+              <Link to="/backend/crud/todo-list">CRUD — 인증 기반 todos</Link>
             </p>
           </>
         )}
@@ -126,6 +133,7 @@ export default function App() {
         <Route path="/backend/cors/todo-list" element={<BackendTodoList />} />
         <Route path="/backend/status/post-todo" element={<PostTodo />} />
         <Route path="/backend/auth/todo-list" element={<AuthTodoList />} />
+        <Route path="/backend/crud/todo-list" element={<CrudTodoList />} />
       </Routes>
     </div>
   )

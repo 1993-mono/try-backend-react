@@ -107,7 +107,7 @@ export async function updateTodo(req, res) {
     // DTO에 있는 것만 덮어씀, 없으면 기존 값 유지
     const title = parsed.data.title !== undefined ? parsed.data.title : todo.title
     const completed =
-      parsed.data.completed !== undefined ? parsed.datareq.body.completed : todo.completed
+      parsed.data.completed !== undefined ? parsed.data.completed : todo.completed
 
     const result = await todosDb.update(id, { title, completed })
     res.json(result.rows[0])
