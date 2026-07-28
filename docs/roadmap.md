@@ -1,13 +1,18 @@
 # Roadmap
 
-학습 로드맵 모음. 프론트엔드(HTTP·REST 연동)를 먼저 하고, 백엔드(서버·API 구현)로 이어간다.
+프론트엔드(HTTP·REST 연동) → 백엔드(Express·API) 로드맵.  
+**이 저장소 기준 로드맵은 완료·마무리**했다.
+
+> **다음 (별도 repo):** TypeScript 프론트 보강.  
+> 이후 예정 이름 예: `try-backend-next` (Next.js API · 추후).  
+> 개명 후보(이 repo): `try-backend-react`.
 
 ## 목록
 
 | 문서 | 내용 | 상태 |
 | ---- | ---- | ---- |
 | **[frontend/roadmap.md](frontend/roadmap.md)** | 기초 개념 · REST 연동 · HTTP 심화 · 자원 모델 · API 명세서 (0~4) | 0~4 완료 |
-| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 검증·환경 · 명세 · 배포 · Spring 연결 (1~10) | §9 완료 · §10 ← 다음 |
+| **[backend/roadmap.md](backend/roadmap.md)** | Express 서버 · CORS · DB · 구조 · 인증 · 검증·환경 · 명세 · 배포 · Spring 연결 (1~10) | **완료** (§6 services · §10 PM2/Spring 생략) |
 
 ## 흐름 (한눈에)
 
@@ -18,7 +23,10 @@
                               ▼
 [백엔드]  docs/backend/roadmap.md
   1 서버 역할 → 2 Express → 3 CORS → 4 status → 5 DB → 6 구조
-            → 7 인증 → 8 검증·환경 → 9 명세 → 10 배포·Spring
+            → 7 인증 → 8 검증·환경 → 9 명세 → 10 배포·Spring (생략)
+                              │
+                              ▼
+[이 repo 종료]  →  (다음) TypeScript 전용 repo
 ```
 
 ## 자료 구조

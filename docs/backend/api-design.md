@@ -307,7 +307,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spec))
 
 ### URL · 에러
 
-- [ ] Supabase `?id=eq.` 와 Express `/todos/:id` 차이를 한 줄로 설명 가능
+- [x] Supabase `?id=eq.` 와 Express `/todos/:id` 차이를 한 줄로 설명 가능
 - [ ] 컨트롤러·미들웨어 에러 body가 모두 `{ error: "..." }` 인지 확인
 - [ ] curl로 `400` / `401` / `404` body 형태 확인
 

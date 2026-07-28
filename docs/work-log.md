@@ -47,13 +47,17 @@
 14. 배포 및 Express-Spring 대응 검토
 15. 배포 확인 및 인증 기반 todos CRUD 연동 검토
 16. Supabase 직연동 vs Express 서버 역할 검토
+17. 서버 프로세스 실행 및 헬스체크 검토
+: node · GET /health 확인
+: PM2 · Spring 생략
 
 ---
 
 ## 다음 제안 시 참고
 
-- 다음 진행(예정): `Supabase 직연동 vs Express 서버 역할 검토` — 말로 차이 정리 · 로드맵 마무리 체크
-- 직전 채택: Supabase 직연동 vs Express 서버 역할 검토
-- 직전 완료 흐름: 인증 기반 todos CRUD (`src/pages/backend/crud/TodoList.jsx`) · §9 명세 · Spring/Swagger 생략
-- 마무리 목표 남은 것: Supabase 직연동 vs 자기 서버 차이 설명 · 로드맵 체크 갱신
-- §6 보류: services 실습 미완료 (`controller` → `db` 직연결)
+- **이 저장소(try-backend): 로드맵 종료·아카이브.** 추가 본편 진행 없음
+- 다음(별도 repo): **TypeScript** 프론트 보강. 이후 `try-backend-next`(Next API)는 추후
+- 이 repo 개명 후보: `try-backend-react`
+- 직전 채택: 서버 프로세스 실행 및 헬스체크 검토
+- 백엔드 본편 완료. 보류·생략: §6 services · §10 PM2/Spring · Swagger
+- 실무 백엔드 참고: `/home/hwang444493/workplatform-backend` (Laravel · MySQL) — 필요 시 별도 검토

@@ -190,18 +190,19 @@ services/     → 비즈니스 로직
 
 ---
 
-## 10. 배포 · Spring 연결 ← 다음
+## 10. 배포 · Spring 연결 — 생략
 
-### 배포 (선택)
+### 배포
 
-- [ ] 프로세스 실행 — `node` / PM2 맛보기
-- [ ] `/health` 헬스체크
+- [x] 프로세스 실행 — `yarn server` (`node`)로 기동 (개발 중 계속 사용)
+- [x] `/health` 헬스체크 — §1부터 존재 · 확인 완료
+- [ ] PM2 맛보기 — **생략**
 
-### 실무 Spring 대응
+### 실무 Spring 대응 — 생략
 
-Express로 익힌 뒤 회사 코드를 읽을 때:
+참고용 대응표 (진행하지 않음):
 
-| Express (학습) | Spring (실무) |
+| Express | Spring |
 | -------------- | ------------- |
 | `routes` | `@GetMapping` / `@PostMapping` Controller |
 | `controllers` | Controller 메서드 |
@@ -211,16 +212,20 @@ Express로 익힌 뒤 회사 코드를 읽을 때:
 | `req.params` | `@PathVariable` |
 | 명세 한 행 | endpoint 정의 |
 
-- [ ] (선택) 회사 API 명세 한 개를 위 표로 **대응**해 보기
+- [ ] (선택) 회사 API 명세 한 개를 위 표로 **대응**해 보기 — **생략**
 
 ---
 
 ## 마무리 목표 (기초 1~6)
 
-- [ ] React가 **자기 Express 서버**로 todos CRUD
-- [ ] status · JSON 응답을 서버에서 통제
-- [ ] DB에 반영 · 폴더 구조로 정리
-- [ ] Supabase 직연동 vs 자기 서버 — 차이 설명 가능
+- [x] React가 **자기 Express 서버**로 todos CRUD
+- [x] status · JSON 응답을 서버에서 통제
+- [x] DB에 반영 · 폴더 구조로 정리
+- [x] Supabase 직연동 vs 자기 서버 — 차이 설명 가능
+
+> **백엔드 본편 완료 · 이 저장소 로드맵 종료.**  
+> 보류·생략: §6 `services/` · §9 Swagger · §10 PM2 · §10 Spring  
+> 다음 단계(별도 repo): TypeScript 프론트 보강 → (추후) `try-backend-next`
 
 ---
 
@@ -229,5 +234,6 @@ Express로 익힌 뒤 회사 코드를 읽을 때:
 - Docker · Kubernetes
 - GraphQL · gRPC
 - 마이크로서비스
-- Spring Boot를 처음부터 (Express 후 §10에서 연결)
+- Spring Boot / Express↔Spring 대응 (§10 생략)
 - ORM 전부 (Prisma 등) — raw SQL 먼저
+- §6 `services/` 레이어 분리 (나중에 끼우기)
